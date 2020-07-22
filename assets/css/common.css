@@ -1,0 +1,3794 @@
+@charset "UTF-8";
+/**
+ * VARIABLE
+ * global...サイト全体に使用するサイズや数値に関する変数です。
+ * breakpoint...メディアクエリで使用するブレイクポイントです。
+ * font-family...font-family指定をまとめています。
+ * color...グローバルに使用する色指定です。
+ * z-index...z-indexの並び順を管理します。
+ * easing...cubic-bezier関数を使用したタイミング関数を定義しています。
+ *
+ * FUNCTION
+ * strip-unit...pxやremなどの単位を取り除きます。
+ * em...pxをemに変換します。
+ * rem...pxをremに変換します。
+ * tint...白色を加えて明度を明るくします。
+ * shade...黒色を加えて明度を暗くします。
+ * z-index...z-indexの並び順を管理します。
+ * tracking...Photoshopのカーニングをemに変換します。
+ *
+ * MIXIN
+ * mq-up...メディアクエリを`min-width`で挿入します。
+ * mq-down...メディアクエリを`max-width`で挿入します。
+ * responsive...レスポンシブ対応クラスを生成します。
+ * clearfix...floatの解除をします。
+ * on-event...:hover, :active, :focusをまとめて指定します。
+ * sr-only...非表示にしてスクリーンリーダーにだけ読み上げさせます。
+ * layout...layoutオブジェクトのベーススタイルです。
+ * media...mediaオブジェクトのベーススタイルです。
+ * flag...flagオブジェクトのベーススタイルです。
+ * list-unstyled...list-unstyledオブジェクトのベーススタイルです。
+ * list-mark...list-markオブジェクトのベーススタイルです。
+ * ratio...ratioオブジェクトのベーススタイルです。
+ * box...boxオブジェクトのベーススタイルです。
+ *
+ * BASE
+ * normalize...Normalize.cssをインポートしています。
+ * base...タイプセレクタと属性セレクタのデフォルトスタイルです。
+ *
+ * LAYOUT
+ * header...`<body>`タグ直下にある`<header>`タグのスタイルです。
+ * footer...`<body>`タグ直下にある`<footer>`タグのスタイルです。
+ * main...`<main>`タグのスタイルです。
+ * content...`<article>`タグが使われるようなメインコンテンツのスタイルです。
+ * sidebar...`<aside>`タグが使われるようなサイドバーのスタイルです。
+ * section...`<section>`要素を使うようなセクションの余白を管理します。
+ *
+ * COMPONENT
+ * wrapper...最大幅を指定します。
+ * layout...汎用的なレイアウトオブジェクトです。グリッドレイアウトなどに使用できます。
+ * media...画像とテキストが横並びになるオブジェクトです。テキストを画像に回り込みさせます。
+ * flag...画像とテキストが横並びになるオブジェクトです。縦方向の指定ができます。
+ * list-unstyled...`<ul>`と`<ol>`でデフォルトスタイルをリセットします。
+ * list-ordered...番号付きリストを入れ子レベルに応じて、1, 1.1のように区切り文字を付け加えます。
+ * list-mark...リストアイテムの左にアイコンを配置します。
+ * embed...Youtubeなどをアスペクト比を固定してレスポンシブ対応させる場合に使用します。
+ * ratio...アスペクト比を固定したまま伸縮させます。
+ * table...tableのレイアウトアルゴリズムの変更、余白の変更をします。
+ *
+ * PROJECT
+ * icon...アイコンフォントです。テンプレートから自動で生成されます。
+ * icon-extend...アイコンフォントを拡張するModifierです。
+ * button...ボタンコンポーネントです。
+ * breadcrumb...パンくずリストコンポーネントです。
+ * label...インラインのラベルコンポーネントです。
+ * badge...投稿数のような数値を表示するバッジコンポーネントです。
+ * box...画像やテキストなどを縦に並べるコンポーネントです。
+ * card...カードタイプのコンポーネントです。
+ *
+ * SCOPE
+ * blog...ブログページのスタイルです。
+ *
+ * UTILITY
+ * text...テキストのスタイルに関する汎用クラスです。
+ * align...画像などを中央や右側に配置します。
+ * margin...マージンで余白の管理をします。常に下方向にだけ余白をとります。
+ * display...要素の表示や改行をコントロールする場合に使用します。
+ * width...おもにグリッドで使用する`width`を指定する汎用クラスです。
+ * offset...おもにグリッドで使用する`margin-right`を指定する汎用クラスです。
+ * percent...`width`プロパティを5%刻みで指定する汎用クラスです。
+ * sr-only...要素を非表示にさせますが、スクリーンリーダーには読み上げられます。
+ */
+/**
+ * このスタイルシートは[FLOCSS](https://github.com/hiloki/flocss)をベースにしています。
+ * 定義されているレイヤー以外にもThemeやTestなどのレイヤーを追加することもできます。
+ * 詳しくは[CSSコーディングルール](https://github.com/manabuyasuda/styleguide/blob/master/css-coding-rule.md#flocss)を参照してください。
+ */
+/* =============================================================================
+   #Foundation
+   ========================================================================== */
+/**
+ * Foundationレイヤーでは`html`や`body`のような広範囲にわたるベーススタイル、
+ * `h2`や`ul`のような基本的なタイプセレクタのデフォルトスタイルを定義します。
+ * 装飾的なスタイルは避けて、できる限り低詳細度に保ちます。idセレクタやclassセレクタは使用しません。
+ */
+/* #Normalize.css
+   -------------------------------------------------------------------------- */
+/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS and IE text size adjust after device orientation change,
+ *    without disabling user zoom.
+ */
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+
+/**
+ * Remove default margin.
+ */
+body {
+  margin: 0;
+}
+
+/* HTML5 display definitions
+   ========================================================================== */
+/**
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11
+ * and Firefox.
+ * Correct `block` display not defined for `main` in IE 11.
+ */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/**
+ * 1. Correct `inline-block` display not defined in IE 8/9.
+ * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ */
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  /* 1 */
+  vertical-align: baseline;
+  /* 2 */
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.
+ */
+[hidden],
+template {
+  display: none;
+}
+
+/* Links
+   ========================================================================== */
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+a {
+  background-color: transparent;
+}
+
+/**
+ * Improve readability of focused elements when they are also in an
+ * active/hover state.
+ */
+a:active,
+a:hover {
+  outline: 0;
+}
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+ */
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+ */
+b,
+strong {
+  font-weight: bold;
+}
+
+/**
+ * Address styling not present in Safari and Chrome.
+ */
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari, and Chrome.
+ */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove border when inside `a` element in IE 8/9/10.
+ */
+img {
+  border: 0;
+}
+
+/**
+ * Correct overflow not hidden in IE 9/10/11.
+ */
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Grouping content
+   ========================================================================== */
+/**
+ * Address margin not present in IE 8/9 and Safari.
+ */
+figure {
+  margin: 1em 40px;
+}
+
+/**
+ * Address differences between Firefox and other browsers.
+ */
+hr {
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  height: 0;
+}
+
+/**
+ * Contain overflow in all browsers.
+ */
+pre {
+  overflow: auto;
+}
+
+/**
+ * Address odd `em`-unit font size rendering in all browsers.
+ */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+/* Forms
+   ========================================================================== */
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+  margin: 0;
+  /* 3 */
+}
+
+/**
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
+ */
+button {
+  overflow: visible;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
+ */
+button,
+select {
+  text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+  cursor: pointer;
+  /* 3 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+input {
+  line-height: normal;
+}
+
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
+input[type="checkbox"],
+input[type="radio"] {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari and Chrome.
+ */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  /* 2 */
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * Define consistent border, margin, and padding.
+ */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct `color` not being inherited in IE 8/9/10/11.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+legend {
+  border: 0;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * Remove default vertical scrollbar in IE 8/9/10/11.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+optgroup {
+  font-weight: bold;
+}
+
+/* Tables
+   ========================================================================== */
+/**
+ * Remove most spacing between table cells.
+ */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td,
+th {
+  padding: 0;
+}
+
+/* #Base
+   -------------------------------------------------------------------------- */
+/**
+ * Baseレイヤーにはプロジェクトにおける、基本的なベーススタイルを定義します。
+ * 要素セレクタや属性セレクタなど、詳細度はできるかぎり低く保っておきます。
+ * 基本的にclass属性は使用しません。
+ */
+/**
+ * `padding`と`border`を`width`に含めます。
+ * https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+ */
+html {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+html {
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+@media screen and (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+body {
+  color: #000;
+  font-family: "Helvetica Neue", Helvetica, "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+  font-weight: 400;
+  /* アンチエイリアスを指定する */
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
+  /* メトリクスカーニングを指定する */
+  -webkit-font-kerning: normal;
+          font-kerning: normal;
+  background-color: #fff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: inherit;
+  font-weight: 600;
+  line-height: 1.4;
+  color: inherit;
+}
+
+ul, ol {
+  padding-left: 1em;
+}
+
+/**
+ * ネストされたリストのマージンをリセットします。
+ */
+li > ul, li > ol {
+  margin-bottom: 0;
+}
+
+/**
+ * `dt`と`dd`の左端を揃えます。
+ */
+dd {
+  margin-left: 0;
+}
+
+table {
+  width: 100%;
+}
+
+th {
+  text-align: left;
+}
+
+a {
+  text-decoration: underline;
+  color: #2b70ba;
+}
+
+a:hover, a:active, a:focus {
+  text-decoration: underline;
+  color: #5997d9;
+}
+
+/**
+ * フルードイメージにします。
+ */
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+/**
+ * IEでSVGがフルードイメージにならない不具合があります。
+ * 属性値が`.svg`で終わる要素に適応します。
+ */
+[src$=".svg"],
+[data$=".svg"] {
+  width: 100%;
+}
+
+/**
+ * 日本語では斜体を使用しないためリセットします。
+ */
+i,
+cite,
+em,
+address,
+dfn {
+  font-style: normal;
+}
+
+code,
+pre {
+  font-family: Consolas, Menlo, Courier, monospace;
+}
+
+code {
+  padding: 0.2em;
+  border-radius: 3px;
+  font-size: 0.8em;
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+pre code {
+  padding: 0;
+  font-size: 0.8em;
+  background-color: inherit;
+}
+
+h1, h2, h3, h4, h5, h6,
+ul, ol, dl,
+blockquote, p, address,
+hr,
+table,
+fieldset, figure,
+pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* =============================================================================
+   #Layout
+   ========================================================================== */
+/**
+ * Layoutレイヤーはヘッダーやフッターのような、ページを構成するコンテナブロックのスタイルを定義します。
+ * 目安としてはワイヤーフレームに書かれるような大きな単位のブロックです。
+ * 汎用性のあるグリッドシステムは次のObject/Componentレイヤーで定義します。
+ * グローバルナビゲーションやコピーライトのようなコンポーネントは、Object/Projectレイヤーで定義します。
+ * 基本的にはclass属性を使用しますが、id属性を使用することもできます。
+ * プレフィックス（接頭辞）として`l-`をつけます。
+ */
+/* #Header
+   -------------------------------------------------------------------------- */
+/*doc
+---
+title: header
+name: header
+categories: [layout]
+---
+
+`<body>`タグ直下にある`<header>`タグのスタイルです。
+ロゴやグローバルナビゲーションのレイアウトを含むことはできますが、
+コンポーネント自体はobject/projectレイヤーで定義します。
+
+```block
+<body>
+  <header class="l-header">
+    <div class="l-header__logo">
+      <h1 class="p-logo">logo</h1>
+    </div>
+    <nav class="l-header__global-nav">
+      <ul class="p-global-nav">
+        <li></li>
+        <li></li>
+      <ul>
+    </nav>
+  </header>
+</body>
+```
+*/
+/* #Footer
+   -------------------------------------------------------------------------- */
+/*doc
+---
+title: footer
+name: footer
+categories: [layout]
+---
+
+`<body>`タグ直下にある`<footer>`タグのスタイルです。
+コピーライトやナビゲーションのレイアウトを含むことはできますが、
+コンポーネント自体はobject/projectレイヤーで定義します。
+
+```block
+<body>
+  <footer class="l-footer">
+    <div class="l-footer__copyright">
+      <small class="p-copyright"></small>
+    </div>
+    <nav class="l-footer__sub-nav">
+      <ul class="p-foot-nav">
+        <li></li>
+        <li></li>
+      <ul>
+    </nav>
+  </footer>
+</body>
+```
+*/
+/* #Main
+   -------------------------------------------------------------------------- */
+/*doc
+---
+title: main
+name: main
+categories: [layout]
+---
+
+`<main>`タグのスタイルです。ドキュメントのメインコンテンツを示し、ドキュメント内で1つしか記述できません。
+<article>タグや<nav>タグなどの中に入れることはできません。
+
+取り扱いの難しいタグなので、使わないという選択をするのもいいでしょう。
+
+```block
+<body>
+  <main id="l-main">
+  </main>
+</body>
+```
+*/
+/* #Content
+   -------------------------------------------------------------------------- */
+/*doc
+---
+title: content
+name: content
+categories: [layout]
+---
+
+`<article>`タグが使われるようなメインコンテンツのスタイルです。
+ナビゲーションやバナーなどのレイアウトを含むことはできますが、
+コンポーネント自体はobject/projectレイヤーで定義します。
+
+```block
+<body>
+  <article class="l-content s-blog">
+    <header class="l-content__lead"></header>
+  </article>
+</body>
+```
+*/
+/* #Sidebar
+   -------------------------------------------------------------------------- */
+/*doc
+---
+title: sidebar
+name: sidebar
+categories: [layout]
+---
+
+`<aside>`タグが使われるようなサイドバーのスタイルです。
+ナビゲーションやバナーなどのレイアウトを含むことはできますが、
+コンポーネント自体はobject/projectレイヤーで定義します。
+
+```block
+<body>
+  <article class="l-content"></article>
+  <aside class="l-sidebar">
+    <div class="l-sidebar__item">
+       <ul class="p-side-nav"></ul>
+    </div>
+    <div class="l-sidebar__item">
+       <div class="p-banner"></div>
+    </div>
+  </aside>
+</body>
+```
+*/
+/* #Section
+   -------------------------------------------------------------------------- */
+/*doc
+---
+title: section
+name: section
+categories: [layout]
+---
+
+`<section>`タグを使うようなセクションの余白（`margin`）を管理します。
+コンポーネント単位での余白はobject/utility/_margin.scssで管理をします。
+
+サイズはデフォルトで3つ、最大で5つとします。
+
+1. tiny(optional)
+2. small
+3. medium(default)
+4. large
+5. huge(optional)
+
+Modifierなしをmedium、変更する場合にはModifierを指定します。
+
+```block
+<div class="l-section">
+  <h2>見出し2</h2>
+</div>
+
+<div class="l-section l-section--small">
+  <h2>見出し2</h2>
+</div>
+
+<div class="l-section l-section--large">
+  <h2>見出し2</h2>
+</div>
+```
+*/
+/* =============================================================================
+   #Object
+   ========================================================================== */
+/**
+ * Objectレイヤーはプロジェクトにおけるビジュアルパターンです。抽象度や詳細度、
+ * 拡張性などによって、4つのレイヤーにわけられます。
+ * それぞれのレイヤーにはプレフィックス（接頭辞）をつけます。
+ * 1. Component（`c-`）
+ * 2. Project（`p-`）
+ * 3. Scope(`s-`)
+ * 4. Utility（`u-`）
+ *
+ * ランディングページのようにページ特有のスタイルを多く含む場合は、
+ * ページ専用のCSSファイルを作成することもできます。
+ * ページ専用のスタイルは、そのページにだけ読み込ませることでスコープをつくり、
+ * プレフィックス（接頭辞）をつけないことで名前の重複を防ぎます。
+ */
+/* -----------------------------------------------------------------------------
+   #Component
+   -------------------------------------------------------------------------- */
+/**
+ * Componentレイヤーは多くのプロジェクトで横断的に再利用のできるような、小さな単位のモジュール（機能）です。
+ * OOCSSの構造（structure）の機能を担うため、装飾的なスタイルをできるだけ含めないようにします。
+ * また、`width`や`margin`といったレイアウトに影響を与えるプロパティもできるだけ含めないようにします。
+ * 例えばgridやmediaといったレイアウトパターンが該当します。
+ * プレフィックス（接頭辞）として`c-`をつけます。
+ */
+/* #Wrapper
+   -------------------------------------------------------------------------- */
+/*doc
+---
+title: wrapper
+name: wrapper
+categories: [component]
+---
+
+横幅を制限するオブジェクトです。
+
+Modifierは以下のとおりです。
+
+* 左右の余白を追加 `--small`, `--medium`, `--large`
+
+```block
+<div class="c-wrapper" style="background-color:#eee;margin-bottom:1rem;">c-wrapper</div>
+<div class="c-wrapper c-wrapper--medium" style="background-color:#eee;margin-bottom:1rem;">c-wrapper c-wrapper--medium</div>
+<div class="c-wrapper u-8of12" style="background-color:#eee;">c-wrapper u-8of12</div>
+```
+*/
+.c-wrapper {
+  width: 100%;
+  max-width: 960px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.c-wrapper--small {
+  padding-right: 0.85rem;
+  padding-left: 0.85rem;
+}
+
+.c-wrapper--medium {
+  padding-right: 1.7rem;
+  padding-left: 1.7rem;
+}
+
+.c-wrapper--large {
+  padding-right: 3.4rem;
+  padding-left: 3.4rem;
+}
+
+/* #Layout
+   -------------------------------------------------------------------------- */
+/*doc
+---
+title: layout
+name: layout
+categories: [component]
+---
+
+汎用的なレイアウトオブジェクトです。`width`の変更はUtilityレイヤーで指定します。
+
+Modifierは以下のとおりです。
+
+* ガターの追加 `--small`, `--medium`, `--large`
+* text-alignの変更 `--middle`, `--bottom`
+* 配置を反転 `--reverse`
+* `.c-layout__item`のカラム幅をまとめて指定 `--colx`, `--colxandx`
+
+```block
+<div class="c-wrapper">
+  <div class="c-layout c-layout--medium" style="margin-bottom:1rem;">
+    <div class="c-layout__item u-8of12-md"><div style="background-color:lightblue;">c-layout__item u-8of12-md</div></div>
+    <div class="c-layout__item u-4of12-md"><div style="background-color:lightblue;">c-layout__item u-4of12-md</div></div>
+  </div>
+
+  <div class="c-layout c-layout--reverse c-layout--medium" style="margin-bottom:1rem;">
+    <div class="c-layout__item u-8of12-md"><div style="background-color:lightblue;">c-layout--rev c-layout__item u-8of12-md</div></div>
+    <div class="c-layout__item u-4of12-md"><div style="background-color:lightblue;">c-layout--rev c-layout__item u-4of12-md</div></div>
+  </div>
+
+  <div class="c-layout c-layout--center c-layout--medium" style="margin-bottom:1rem;">
+    <div class="c-layout__item u-8of12-md"><div style="background-color:lightblue;">c-layout--center c-layout__item u-8of12-md</div></div>
+  </div>
+
+  <div class="c-layout c-layout--medium c-layout--col2-sm c-layout--col3-md" style="margin-bottom:1rem;">
+    <div class="c-layout__item"><div style="background-color:lightblue;">c-layout__item c-layout--col2-sm c-layout--col3-md</div></div>
+    <div class="c-layout__item"><div style="background-color:lightblue;">c-layout__item c-layout--col2-sm c-layout--col3-md</div></div>
+    <div class="c-layout__item"><div style="background-color:lightblue;">c-layout__item c-layout--col2-sm c-layout--col3-md</div></div>
+  </div>
+
+  <div class="c-layout c-layout--col4and8" style="margin-bottom:1rem;">
+    <div class="c-layout__item"><div style="background-color:lightblue;">c-layout__item u-8of12-md</div></div>
+    <div class="c-layout__item"><div style="background-color:lightblue;">c-layout__item u-4of12-md</div></div>
+  </div>
+</div>
+```
+*/
+.c-layout {
+  display: block;
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+  list-style-type: none;
+}
+
+.c-layout__item {
+  display: inline-block;
+  width: 100%;
+  font-size: medium;
+  font-size: 1rem;
+  vertical-align: top;
+}
+
+/**
+ * ガターを3つのパリエーションから選択します。
+ */
+.c-layout--small {
+  margin-left: -0.85rem;
+}
+
+.c-layout--small > .c-layout__item {
+  padding-left: 0.85rem;
+}
+
+.c-layout--medium {
+  margin-left: -1.7rem;
+}
+
+.c-layout--medium > .c-layout__item {
+  padding-left: 1.7rem;
+}
+
+.c-layout--large {
+  margin-left: -3.4rem;
+}
+
+.c-layout--large > .c-layout__item {
+  padding-left: 3.4rem;
+}
+
+/**
+ * 垂直位置を2つのパリエーションから選択します（デフォルトは`top`）。
+ */
+.c-layout--middle > .c-layout__item {
+  vertical-align: middle;
+}
+
+.c-layout--bottom > .c-layout__item {
+  vertical-align: bottom;
+}
+
+/**
+ * 要素を中央配置にします（デフォルトは`left`）。
+ */
+.c-layout--center {
+  text-align: center;
+}
+
+.c-layout--center > .c-layout__item {
+  text-align: left;
+}
+
+/**
+ * 要素を右端寄せにします（デフォルトは`left`）。
+ */
+.c-layout--right {
+  text-align: right;
+}
+
+.c-layout--right > .c-layout__item {
+  text-align: left;
+}
+
+/**
+ * `.c-layout__item`のカラム数をまとめて指定します。
+ */
+.c-layout--col2 > .c-layout__item {
+  width: 50%;
+}
+
+@media screen and (min-width: 400px) {
+  .c-layout--col2-sm > .c-layout__item {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .c-layout--col2-md > .c-layout__item {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .c-layout--col2-lg > .c-layout__item {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .c-layout--col2-xl > .c-layout__item {
+    width: 50%;
+  }
+}
+
+.c-layout--col3 > .c-layout__item {
+  width: 33.33333%;
+}
+
+@media screen and (min-width: 400px) {
+  .c-layout--col3-sm > .c-layout__item {
+    width: 33.33333%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .c-layout--col3-md > .c-layout__item {
+    width: 33.33333%;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .c-layout--col3-lg > .c-layout__item {
+    width: 33.33333%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .c-layout--col3-xl > .c-layout__item {
+    width: 33.33333%;
+  }
+}
+
+.c-layout--col4 > .c-layout__item {
+  width: 25%;
+}
+
+@media screen and (min-width: 400px) {
+  .c-layout--col4-sm > .c-layout__item {
+    width: 25%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .c-layout--col4-md > .c-layout__item {
+    width: 25%;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .c-layout--col4-lg > .c-layout__item {
+    width: 25%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .c-layout--col4-xl > .c-layout__item {
+    width: 25%;
+  }
+}
+
+.c-layout--col2and10 > .c-layout__item:nth-child(odd) {
+  width: 16.66667%;
+}
+
+.c-layout--col2and10 > .c-layout__item:nth-child(even) {
+  width: 83.33333%;
+}
+
+@media screen and (min-width: 400px) {
+  .c-layout--col2and10-sm > .c-layout__item:nth-child(odd) {
+    width: 16.66667%;
+  }
+  .c-layout--col2and10-sm > .c-layout__item:nth-child(even) {
+    width: 83.33333%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .c-layout--col2and10-md > .c-layout__item:nth-child(odd) {
+    width: 16.66667%;
+  }
+  .c-layout--col2and10-md > .c-layout__item:nth-child(even) {
+    width: 83.33333%;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .c-layout--col2and10-lg > .c-layout__item:nth-child(odd) {
+    width: 16.66667%;
+  }
+  .c-layout--col2and10-lg > .c-layout__item:nth-child(even) {
+    width: 83.33333%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .c-layout--col2and10-xl > .c-layout__item:nth-child(odd) {
+    width: 16.66667%;
+  }
+  .c-layout--col2and10-xl > .c-layout__item:nth-child(even) {
+    width: 83.33333%;
+  }
+}
+
+.c-layout--col3and9 > .c-layout__item:nth-child(odd) {
+  width: 25%;
+}
+
+.c-layout--col3and9 > .c-layout__item:nth-child(even) {
+  width: 75%;
+}
+
+@media screen and (min-width: 400px) {
+  .c-layout--col3and9-sm > .c-layout__item:nth-child(odd) {
+    width: 25%;
+  }
+  .c-layout--col3and9-sm > .c-layout__item:nth-child(even) {
+    width: 75%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .c-layout--col3and9-md > .c-layout__item:nth-child(odd) {
+    width: 25%;
+  }
+  .c-layout--col3and9-md > .c-layout__item:nth-child(even) {
+    width: 75%;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .c-layout--col3and9-lg > .c-layout__item:nth-child(odd) {
+    width: 25%;
+  }
+  .c-layout--col3and9-lg > .c-layout__item:nth-child(even) {
+    width: 75%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .c-layout--col3and9-xl > .c-layout__item:nth-child(odd) {
+    width: 25%;
+  }
+  .c-layout--col3and9-xl > .c-layout__item:nth-child(even) {
+    width: 75%;
+  }
+}
+
+.c-layout--col4and8 > .c-layout__item:nth-child(odd) {
+  width: 33.33333%;
+}
+
+.c-layout--col4and8 > .c-layout__item:nth-child(even) {
+  width: 66.66667%;
+}
+
+@media screen and (min-width: 400px) {
+  .c-layout--col4and8-sm > .c-layout__item:nth-child(odd) {
+    width: 33.33333%;
+  }
+  .c-layout--col4and8-sm > .c-layout__item:nth-child(even) {
+    width: 66.66667%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .c-layout--col4and8-md > .c-layout__item:nth-child(odd) {
+    width: 33.33333%;
+  }
+  .c-layout--col4and8-md > .c-layout__item:nth-child(even) {
+    width: 66.66667%;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .c-layout--col4and8-lg > .c-layout__item:nth-child(odd) {
+    width: 33.33333%;
+  }
+  .c-layout--col4and8-lg > .c-layout__item:nth-child(even) {
+    width: 66.66667%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .c-layout--col4and8-xl > .c-layout__item:nth-child(odd) {
+    width: 33.33333%;
+  }
+  .c-layout--col4and8-xl > .c-layout__item:nth-child(even) {
+    width: 66.66667%;
+  }
+}
+
+.c-layout--col5and7 > .c-layout__item:nth-child(odd) {
+  width: 41.66667%;
+}
+
+.c-layout--col5and7 > .c-layout__item:nth-child(even) {
+  width: 58.33333%;
+}
+
+@media screen and (min-width: 400px) {
+  .c-layout--col5and7-sm > .c-layout__item:nth-child(odd) {
+    width: 41.66667%;
+  }
+  .c-layout--col5and7-sm > .c-layout__item:nth-child(even) {
+    width: 58.33333%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .c-layout--col5and7-md > .c-layout__item:nth-child(odd) {
+    width: 41.66667%;
+  }
+  .c-layout--col5and7-md > .c-layout__item:nth-child(even) {
+    width: 58.33333%;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .c-layout--col5and7-lg > .c-layout__item:nth-child(odd) {
+    width: 41.66667%;
+  }
+  .c-layout--col5and7-lg > .c-layout__item:nth-child(even) {
+    width: 58.33333%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .c-layout--col5and7-xl > .c-layout__item:nth-child(odd) {
+    width: 41.66667%;
+  }
+  .c-layout--col5and7-xl > .c-layout__item:nth-child(even) {
+    width: 58.33333%;
+  }
+}
+
+/**
+ * 要素を右から配置させます（HTMLの記述を反転させた状態でレイアウトされます）。
+ */
+.c-layout--reverse {
+  text-align: left;
+  direction: rtl;
+}
+
+.c-layout--reverse > .c-layout__item {
+  text-align: left;
+  direction: ltr;
+}
+
+@media screen and (min-width: 400px) {
+  .c-layout--reverse-sm {
+    text-align: left;
+    direction: rtl;
+  }
+  .c-layout--reverse-sm > .c-layout__item {
+    text-align: left;
+    direction: ltr;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .c-layout--reverse-md {
+    text-align: left;
+    direction: rtl;
+  }
+  .c-layout--reverse-md > .c-layout__item {
+    text-align: left;
+    direction: ltr;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .c-layout--reverse-lg {
+    text-align: left;
+    direction: rtl;
+  }
+  .c-layout--reverse-lg > .c-layout__item {
+    text-align: left;
+    direction: ltr;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .c-layout--reverse-xl {
+    text-align: left;
+    direction: rtl;
+  }
+  .c-layout--reverse-xl > .c-layout__item {
+    text-align: left;
+    direction: ltr;
+  }
+}
+
+/* #Media
+   -------------------------------------------------------------------------- */
+/*doc
+---
+title: media
+name: media
+categories: [component]
+---
+
+画像とテキストを横並びにするオブジェクトです。
+
+`c-flag`オブジェクトと違うのは、縦方向の指定ができないこと、（デフォルトで）テキストが画像に回り込みすることです。
+
+Modifierは以下のとおりです。
+
+* 余白の変更 `--small`, `--large`
+* 配置を反転 `--reverse`
+
+HTMLは画像・テキストの順番で記述して、Modifierでレイアウトを変更します。
+
+```block
+<div class="c-media" style="margin-bottom:1rem;">
+  <div class="c-media__image">
+    <img src="https://placehold.jp/150x150.png">
+  </div>
+  <div class="c-media__body">
+    画像・テキストの順番でマークアップします。
+  </div>
+</div>
+
+<div class="c-media c-media--reverse">
+  <div class="c-media__image">
+    <img src="https://placehold.jp/150x150.png">
+  </div>
+  <div class="c-media__body">
+    画像・テキストの順番でマークアップします。<code>.c-media--reverse</code>を指定すると画像が右側になります。
+  </div>
+</div>
+```
+*/
+.c-media {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.c-media:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.c-media__image {
+  float: left;
+  margin: 0;
+  margin-right: 1.7rem;
+  padding: 0;
+}
+
+.c-media__image > img {
+  display: block;
+}
+
+.c-media__body {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.c-media__body > :last-child {
+  margin-bottom: 0;
+}
+
+/**
+ * 要素間の余白を変更します。
+ */
+.c-media--small > .c-media__image {
+  margin-right: 0.85rem;
+}
+
+.c-media--large > .c-media__image {
+  margin-right: 3.4rem;
+}
+
+/**
+ * 横並びになった要素を右から左の順番でレイアウトします。
+ */
+.c-media--reverse > .c-media__image {
+  float: right;
+  margin-right: 0;
+  margin-left: 1.7rem;
+}
+
+.c-media--reverse.c-media--small > .c-media__image {
+  margin-left: 0.85rem;
+}
+
+.c-media--reverse.c-media--large > .c-media__image {
+  margin-left: 3.4rem;
+}
+
+@media screen and (min-width: 400px) {
+  .c-media--reverse-sm > .c-media__image {
+    float: right;
+    margin-right: 0;
+    margin-left: 1.7rem;
+  }
+  .c-media--reverse-sm.c-media--small > .c-media__image {
+    margin-left: 0.85rem;
+  }
+  .c-media--reverse-sm.c-media--large > .c-media__image {
+    margin-left: 3.4rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .c-media--reverse-md > .c-media__image {
+    float: right;
+    margin-right: 0;
+    margin-left: 1.7rem;
+  }
+  .c-media--reverse-md.c-media--small > .c-media__image {
+    margin-left: 0.85rem;
+  }
+  .c-media--reverse-md.c-media--large > .c-media__image {
+    margin-left: 3.4rem;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .c-media--reverse-lg > .c-media__image {
+    float: right;
+    margin-right: 0;
+    margin-left: 1.7rem;
+  }
+  .c-media--reverse-lg.c-media--small > .c-media__image {
+    margin-left: 0.85rem;
+  }
+  .c-media--reverse-lg.c-media--large > .c-media__image {
+    margin-left: 3.4rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .c-media--reverse-xl > .c-media__image {
+    float: right;
+    margin-right: 0;
+    margin-left: 1.7rem;
+  }
+  .c-media--reverse-xl.c-media--small > .c-media__image {
+    margin-left: 0.85rem;
+  }
+  .c-media--reverse-xl.c-media--large > .c-media__image {
+    margin-left: 3.4rem;
+  }
+}
+
+/* #Flag
+   -------------------------------------------------------------------------- */
+/*doc
+---
+title: flag
+name: flag
+categories: [component]
+---
+
+画像とテキストを横並びにするオブジェクトです。縦方向の指定ができます。
+
+Modifierは以下のとおりです。
+
+* 余白の変更 `--small`, `--large`
+* vertical-alignの変更 `--middle`, `--bottom`
+* 配置を反転 `--reverse`
+* 横並びからブロック `--stack`
+
+HTMLは画像・テキストの順番で記述して、Modifierでレイアウトを変更します。
+
+ブレイクポイントは`stack`のみ`max-width`が指定されています。
+
+```block
+<div class="c-flag" style="margin-bottom:1rem;">
+  <div class="c-flag__image"><img src="http://lorempixel.com/150/150/"></div>
+  <div class="c-flag__body" style="background-color:#eee;">
+    <p>画像とテキストを横並びにするオブジェクトです。<br>余白サイズ、垂直方向、要素の配置順の反転の指定ができます。</p>
+  </div>
+</div>
+
+<div class="c-flag c-flag--middle c-flag--reverse-md" style="margin-bottom:1rem;">
+  <div class="c-flag__image"><img src="http://lorempixel.com/150/150/"></div>
+  <div class="c-flag__body" style="background-color:#eee;">
+    <p>画像とテキストを中央揃え、<code>md</code>から画像を右側に反転させます。</p>
+  </div>
+</div>
+
+<div class="c-flag c-flag--stack-md" style="margin-bottom:1rem;">
+  <div class="c-flag__image"><img src="http://lorempixel.com/150/150/"></div>
+  <div class="c-flag__body" style="background-color:#eee;">
+    <p><code>md</code>未満で横並びから縦にレイアウトさせます。</p>
+  </div>
+</div>
+```
+*/
+.c-flag {
+  display: table;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.c-flag__image {
+  display: table-cell;
+  width: 1px;
+  margin: 0;
+  padding: 0;
+  padding-right: 1.7rem;
+  vertical-align: top;
+}
+
+.c-flag__image > img {
+  max-width: none;
+}
+
+.c-flag__body {
+  display: table-cell;
+  width: auto;
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+}
+
+.c-flag__body > :last-child {
+  margin-bottom: 0;
+}
+
+/**
+ * 垂直位置を2つのパリエーションから選択します（デフォルトは`top`）。
+ */
+.c-flag--middle > .c-flag__image,
+.c-flag--middle > .c-flag__body {
+  vertical-align: middle;
+}
+
+.c-flag--bottom > .c-flag__image,
+.c-flag--bottom > .c-flag__body {
+  vertical-align: bottom;
+}
+
+/**
+ * 要素間の余白を変更します。
+ */
+.c-flag--small > .c-flag__image {
+  padding-right: 0.85rem;
+}
+
+.c-flag--large > .c-flag__image {
+  padding-right: 3.4rem;
+}
+
+/**
+ * 横並びになった要素を右から左の順番でレイアウトされます（right to left）。
+ */
+.c-flag--reverse {
+  text-align: left;
+  direction: rtl;
+}
+
+.c-flag--reverse > .c-flag__image,
+.c-flag--reverse > .c-flag__body {
+  text-align: left;
+  direction: ltr;
+}
+
+.c-flag--reverse > .c-flag__image {
+  padding-right: 0;
+  padding-left: 1.7rem;
+}
+
+.c-flag--reverse.c-flag--small > .c-flag__image {
+  padding-right: 0;
+  padding-left: 0.85rem;
+}
+
+.c-flag--reverse.c-flag--large > .c-flag__image {
+  padding-right: 0;
+  padding-left: 3.4rem;
+}
+
+@media screen and (min-width: 400px) {
+  .c-flag--reverse-sm {
+    text-align: left;
+    direction: rtl;
+  }
+  .c-flag--reverse-sm > .c-flag__image,
+  .c-flag--reverse-sm > .c-flag__body {
+    text-align: left;
+    direction: ltr;
+  }
+  .c-flag--reverse-sm > .c-flag__image {
+    padding-right: 0;
+    padding-left: 1.7rem;
+  }
+  .c-flag--reverse-sm.c-flag--small > .c-flag__image {
+    padding-right: 0;
+    padding-left: 0.85rem;
+  }
+  .c-flag--reverse-sm.c-flag--large > .c-flag__image {
+    padding-right: 0;
+    padding-left: 3.4rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .c-flag--reverse-md {
+    text-align: left;
+    direction: rtl;
+  }
+  .c-flag--reverse-md > .c-flag__image,
+  .c-flag--reverse-md > .c-flag__body {
+    text-align: left;
+    direction: ltr;
+  }
+  .c-flag--reverse-md > .c-flag__image {
+    padding-right: 0;
+    padding-left: 1.7rem;
+  }
+  .c-flag--reverse-md.c-flag--small > .c-flag__image {
+    padding-right: 0;
+    padding-left: 0.85rem;
+  }
+  .c-flag--reverse-md.c-flag--large > .c-flag__image {
+    padding-right: 0;
+    padding-left: 3.4rem;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .c-flag--reverse-lg {
+    text-align: left;
+    direction: rtl;
+  }
+  .c-flag--reverse-lg > .c-flag__image,
+  .c-flag--reverse-lg > .c-flag__body {
+    text-align: left;
+    direction: ltr;
+  }
+  .c-flag--reverse-lg > .c-flag__image {
+    padding-right: 0;
+    padding-left: 1.7rem;
+  }
+  .c-flag--reverse-lg.c-flag--small > .c-flag__image {
+    padding-right: 0;
+    padding-left: 0.85rem;
+  }
+  .c-flag--reverse-lg.c-flag--large > .c-flag__image {
+    padding-right: 0;
+    padding-left: 3.4rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .c-flag--reverse-xl {
+    text-align: left;
+    direction: rtl;
+  }
+  .c-flag--reverse-xl > .c-flag__image,
+  .c-flag--reverse-xl > .c-flag__body {
+    text-align: left;
+    direction: ltr;
+  }
+  .c-flag--reverse-xl > .c-flag__image {
+    padding-right: 0;
+    padding-left: 1.7rem;
+  }
+  .c-flag--reverse-xl.c-flag--small > .c-flag__image {
+    padding-right: 0;
+    padding-left: 0.85rem;
+  }
+  .c-flag--reverse-xl.c-flag--large > .c-flag__image {
+    padding-right: 0;
+    padding-left: 3.4rem;
+  }
+}
+
+/**
+ * 横並びから縦にレイアウトされます。
+ */
+.c-flag--stack {
+  display: block;
+}
+
+.c-flag--stack > .c-flag__image,
+.c-flag--stack > .c-flag__body {
+  width: 100%;
+  display: block;
+}
+
+.c-flag--stack > .c-flag__image {
+  margin-bottom: 1.7rem;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.c-flag--stack > .c-flag__image > img {
+  max-width: 100%;
+}
+
+.c-flag--stack.c-flag--small > .c-flag__image {
+  margin-bottom: 0.85rem;
+}
+
+.c-flag--stack.c-flag--large > .c-flag__image {
+  margin-bottom: 3.4rem;
+}
+
+@media screen and (max-width: 399px) {
+  .c-flag--stack-sm {
+    display: block;
+  }
+  .c-flag--stack-sm > .c-flag__image,
+  .c-flag--stack-sm > .c-flag__body {
+    width: 100%;
+    display: block;
+  }
+  .c-flag--stack-sm > .c-flag__image {
+    margin-bottom: 1.7rem;
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .c-flag--stack-sm > .c-flag__image > img {
+    max-width: 100%;
+  }
+  .c-flag--stack-sm.c-flag--small > .c-flag__image {
+    margin-bottom: 0.85rem;
+  }
+  .c-flag--stack-sm.c-flag--large > .c-flag__image {
+    margin-bottom: 3.4rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .c-flag--stack-md {
+    display: block;
+  }
+  .c-flag--stack-md > .c-flag__image,
+  .c-flag--stack-md > .c-flag__body {
+    width: 100%;
+    display: block;
+  }
+  .c-flag--stack-md > .c-flag__image {
+    margin-bottom: 1.7rem;
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .c-flag--stack-md > .c-flag__image > img {
+    max-width: 100%;
+  }
+  .c-flag--stack-md.c-flag--small > .c-flag__image {
+    margin-bottom: 0.85rem;
+  }
+  .c-flag--stack-md.c-flag--large > .c-flag__image {
+    margin-bottom: 3.4rem;
+  }
+}
+
+@media screen and (max-width: 999px) {
+  .c-flag--stack-lg {
+    display: block;
+  }
+  .c-flag--stack-lg > .c-flag__image,
+  .c-flag--stack-lg > .c-flag__body {
+    width: 100%;
+    display: block;
+  }
+  .c-flag--stack-lg > .c-flag__image {
+    margin-bottom: 1.7rem;
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .c-flag--stack-lg > .c-flag__image > img {
+    max-width: 100%;
+  }
+  .c-flag--stack-lg.c-flag--small > .c-flag__image {
+    margin-bottom: 0.85rem;
+  }
+  .c-flag--stack-lg.c-flag--large > .c-flag__image {
+    margin-bottom: 3.4rem;
+  }
+}
+
+@media screen and (max-width: 1199px) {
+  .c-flag--stack-xl {
+    display: block;
+  }
+  .c-flag--stack-xl > .c-flag__image,
+  .c-flag--stack-xl > .c-flag__body {
+    width: 100%;
+    display: block;
+  }
+  .c-flag--stack-xl > .c-flag__image {
+    margin-bottom: 1.7rem;
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .c-flag--stack-xl > .c-flag__image > img {
+    max-width: 100%;
+  }
+  .c-flag--stack-xl.c-flag--small > .c-flag__image {
+    margin-bottom: 0.85rem;
+  }
+  .c-flag--stack-xl.c-flag--large > .c-flag__image {
+    margin-bottom: 3.4rem;
+  }
+}
+
+/* #List-unstyled
+   -------------------------------------------------------------------------- */
+/*doc
+---
+title: list-unstyled
+name: list-unstyled
+categories: [component]
+---
+
+`<ul>`と`<ol>`のデフォルトスタイルをリセットします。
+
+```block
+<ul class="c-list-unstyled">
+  <li>リスト1
+  <ul class="c-list-unstyled__items">
+    <li>リスト1.1
+    <ul class="c-list-unstyled__items">
+      <li>リスト1.1.1</li>
+      <li>リスト1.1.2</li>
+    </ul>
+    </li>
+    <li>リスト1.2</li>
+  </ul>
+  </li>
+  <li>リスト2</li>
+  <li>リスト3</li>
+</ul>
+```
+*/
+/* ul, ol */
+.c-list-unstyled {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+/* li > ul, li > ol */
+.c-list-unstyled__items {
+  margin-left: 1em;
+  text-indent: -1em;
+  list-style-position: inside;
+}
+
+/* #List-ordered
+   -------------------------------------------------------------------------- */
+/*doc
+---
+title: list-ordered
+name: list-ordered
+categories: [component]
+---
+
+番号付きリストを入れ子レベルに応じて、1, 1.1のように区切り文字を付け加えます。
+
+```block
+<ol class="c-list-ordered">
+  <li class="c-list-ordered__item">リスト1
+  <ol class="c-list-ordered__items">
+    <li class="c-list-ordered__item">リスト1.1
+    <ol class="c-list-ordered__items">
+      <li class="c-list-ordered__item">リスト1.1.1</li>
+      <li class="c-list-ordered__item">リスト1.1.2</li>
+    </ol>
+    </li class="c-list-ordered__item">
+    <li class="c-list-ordered__item">リスト1.2</li>
+  </ol>
+  </li class="c-list-ordered__item">
+  <li class="c-list-ordered__item">リスト2</li>
+</ol>
+```
+*/
+/* ul */
+.c-list-ordered {
+  display: table;
+  padding-left: 0;
+  list-style-type: none;
+}
+
+/* ul > li */
+.c-list-ordered__item {
+  display: table-row;
+  counter-increment: ordered;
+}
+
+.c-list-ordered__item:before {
+  content: counters(ordered, ".") " ";
+  display: table-cell;
+  padding-right: 0.5em;
+  text-align: right;
+}
+
+/* li > ul */
+.c-list-ordered__items {
+  counter-reset: ordered;
+  padding-left: 0;
+  list-style-type: none;
+}
+
+/* #List-mark
+   -------------------------------------------------------------------------- */
+/*doc
+---
+title: list-mark
+name: list-mark
+categories: [component]
+---
+
+リストアイテムの左にアイコンを配置します。`.p-icon`で任意のアイコンを表示させます。
+複数行になった場合はテキストの位置で左揃えになります。
+
+アイコンのサイズは以下のmodifierで変更できます。
+
+- `.c-list-mark__icon--small`
+- `.c-list-mark__icon--large`
+
+```block
+<ul class="c-list-mark">
+  <li class="c-list-mark__item"><span class="c-list-mark__icon p-icon p-icon--home" aria-hidden="true"></span>リスト1
+  <ul class="c-list-mark__items">
+    <li class="c-list-mark__item"><span class="c-list-mark__icon c-list-mark__icon--small p-icon p-icon--home" aria-hidden="true"></span>リスト1.1
+    </li>
+    <li class="c-list-mark__item"><span class="c-list-mark__icon"></span>リスト1.2</li>
+  </ul>
+</ul>
+```
+*/
+/* ul */
+.c-list-mark {
+  display: table;
+  padding-left: 0;
+  list-style-type: none;
+}
+
+/* ul > li */
+.c-list-mark__item {
+  display: table-row;
+}
+
+/* li > span */
+.c-list-mark__icon {
+  display: table-cell;
+  width: 1em;
+  padding-right: 0.25em;
+  text-align: center;
+}
+
+/* li > ul */
+.c-list-mark__items {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.c-list-mark__icon--small {
+  width: 0.8em;
+}
+
+.c-list-mark__icon--small:before {
+  font-size: 0.8em;
+}
+
+.c-list-mark__icon--large {
+  width: 1.2em;
+}
+
+.c-list-mark__icon--large:before {
+  font-size: 1.2em;
+}
+
+/* #Embed
+   -------------------------------------------------------------------------- */
+/*doc
+---
+title: embed
+name: embed
+categories: [component]
+---
+
+YouTubeなどのエンベディットコンテンツのアクペクト比を指定するオブジェクトです。
+
+Modifierは以下のとおりです。
+
+* アスペクト比16:9 `--16to9`
+* アスペクト比4:3 `--4to3`
+
+```block
+<div class="c-embed c-embed--16to9">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/1OKZOV-iLj4" frameborder="0" allowfullscreen></iframe>
+</div>
+```
+*/
+.c-embed {
+  display: block;
+  overflow: hidden;
+  position: relative;
+  height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.c-embed .c-embed__item,
+.c-embed iframe,
+.c-embed embed,
+.c-embed object,
+.c-embed video {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  border: 0;
+}
+
+/**
+ * アスペクト比 16:9
+ */
+.c-embed--16to9 {
+  padding-bottom: 56.25% !important;
+}
+
+/**
+ * アスペクト比 4:3
+ */
+.c-embed--4to3 {
+  padding-bottom: 75% !important;
+}
+
+/* #Ratio
+   -------------------------------------------------------------------------- */
+/*doc
+---
+title: ratio
+name: ratio
+categories: [component]
+---
+
+アスペクト比を固定したまま伸縮させます。デフォルトは1:1になっています。
+
+Modifierは以下のとおりです。
+
+* アスペクト比16:9 `--16to9`
+* アスペクト比4:3 `--4to3`
+* アスペクト比3:2 `--3to2`
+* アスペクト比2:1 `--2to1`
+
+`.c-ratio__content`には`padding`を指定できないので注意してください。
+
+```block
+<div class="c-ratio c-ratio--16to9">
+  <div class="c-ratio__content">
+    <p></p>
+  </div>
+</div>
+```
+*/
+.c-ratio {
+  display: block;
+  overflow: hidden;
+  position: relative;
+}
+
+.c-ratio:before {
+  content: "";
+  display: block;
+  width: 100%;
+  padding-bottom: 100%;
+}
+
+.c-ratio__content,
+.c-ratio > iframe,
+.c-ratio > embed,
+.c-ratio > object {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.c-ratio--16to9 {
+  padding-bottom: 56.25%;
+}
+
+.c-ratio--4to3 {
+  padding-bottom: 75%;
+}
+
+.c-ratio--3to2 {
+  padding-bottom: 66.66667%;
+}
+
+.c-ratio--2to1 {
+  padding-bottom: 50%;
+}
+
+/* #Table
+   -------------------------------------------------------------------------- */
+/*doc
+---
+title: table
+name: table
+categories: [component]
+---
+
+tableのレイアウトアルゴリズム（`table-layout`）の変更、
+`<th>`と`<td>`のpaddingなどを変更します。
+
+Modifierは以下のとおりです。
+
+* セルの余白を変更 `--small`, `--large`
+
+```block
+<div class="c-wrapper">
+  <table class="c-table c-table--fixed">
+    <tr>
+      <th class="u-percent50">th1</th>
+      <th>th2</th>
+      <th>th3</th>
+    </tr>
+    <tr>
+      <td>td1</td>
+      <td>td2</td>
+      <td>td3</td>
+    </tr>
+  </table>
+</div>
+```
+*/
+.c-table {
+  width: 100%;
+}
+
+.c-table th,
+.c-table td {
+  padding: 1em;
+}
+
+/**
+ * セルを均等にします。`width`を1つだけ指定した場合は、残りのセルが均等になります。
+ */
+.c-table--fixed {
+  table-layout: fixed;
+}
+
+.c-table--small th,
+.c-table--small td {
+  padding: 0.5em;
+}
+
+.c-table--large th,
+.c-table--large td {
+  padding: 1.5em;
+}
+
+/* -----------------------------------------------------------------------------
+   #Project
+   -------------------------------------------------------------------------- */
+/**
+ * Projectレイヤーはプロジェクト固有のパターンで、複数のページで使い回せるようなコンポーネントです。
+ * 具体的なスタイルを持つUI（ユーザーフェイス）で、追加されるコンポーネントのほとんどはこのレイヤーに置かれます。
+ * もし、このレイヤーで同じパターンが3箇所で使われていたら、別のコンポーネントとしてまとめられないか検討しましょう。
+ * プレフィックス（接頭辞）として`p-`をつけます。
+ */
+/* #Icon
+   -------------------------------------------------------------------------- */
+/*doc
+---
+title: icon
+name: icon
+categories: [project]
+---
+
+アイコンフォントを使ったアイコンを表示します。デフォルトでは`:before`擬似要素で表示されます。
+サンプルコードはパンくずリストのホームをアイコンで（2つ目以降はアイコンだけで）示した場合の例です。
+
+装飾的なアイコンは`<span>`と`aria-hidden="true"`でマークアップをします。
+
+意味を伝えたいアイコンは`aria-label=""`でマークアップします。
+テキスト全体を読み上げたときに違和感が出ないようにします。
+
+テキストを表示できない場合は`.u-sr-only`でテキストをマークアップします（非表示のままスクリーンリーダーには読み上げられます）。
+
+```block
+<div>
+  <span class="p-icon p-icon--home" aria-hidden="true"></span>ホーム
+</div>
+
+<div>
+  <span class="p-icon p-icon--home" aria-label="ホーム"></span>
+</div>
+
+<div>
+  <span class="p-icon p-icon--home" aria-hidden="true"></span>
+  <span class="u-sr-only">ホーム</span>
+</div>
+```
+*/
+@font-face {
+  font-family: "iconfont";
+  src: url("../font/iconfont.eot");
+  src: url("../font/iconfont.eot?#iefix") format("eot"), url("../font/iconfont.woff") format("woff"), url("../font/iconfont.ttf") format("truetype"), url("../font/iconfont.svg#iconfont") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* `p-icon p-icon--icon-name`のようなマルチクラスで指定します。 */
+.p-icon:before {
+  font-family: "iconfont";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  top: -0.1em;
+  display: inline-block;
+  vertical-align: middle;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  text-decoration: none;
+  text-transform: none;
+  speak: none;
+}
+
+.p-icon--home:before {
+  content: "";
+}
+
+/* アイコンのModifer */
+/* #Button
+   -------------------------------------------------------------------------- */
+/*doc
+---
+title: button
+name: button
+categories: [project]
+---
+
+ボタンコンポーネントです。
+
+Modifierは以下のとおりです。
+
+* 100%表示 `--full`
+* 真円 `--circle`
+* 楕円 `--pill`, `--pill-right`, `--pill-center`, `--pill-left`
+
+```block
+<p><button class="p-button">p-button</button></p>
+<p><a class="p-button p-button--full">p-button p-button--full</a></p>
+
+<p>
+  <button class="p-button p-button--pill-left">p-button p-button--pill-left</button>
+  <button class="p-button p-button--pill-center">p-button p-button--pill-center</button>
+  <button class="p-button p-button--pill-right">p-button p-button--pill-right</button>
+</p>
+```
+*/
+.p-button {
+  display: inline-block;
+  margin: 0;
+  padding: 0.75em;
+  border: none;
+  border-radius: 3px;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  background: transparent;
+  cursor: pointer;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+.p-button:hover, .p-button:active, .p-button:focus {
+  text-decoration: none;
+}
+
+.p-button:disabled, .p-button.is-disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.p-button--full {
+  width: 100%;
+}
+
+.p-button--circle {
+  border-radius: 50%;
+}
+
+/**
+ * カプセル状の錠剤のような形をしたボタンコンポーネントです。
+ */
+.p-button--pill {
+  border-radius: 3em;
+}
+
+.p-button--pill-right {
+  border-radius: 0 3em 3em 0;
+}
+
+.p-button--pill-center {
+  border-radius: 0;
+}
+
+.p-button--pill-left {
+  border-radius: 3em 0 0 3em;
+}
+
+/* #Breadcrumb
+   -------------------------------------------------------------------------- */
+/*doc
+---
+title: breadcrumb
+name: breadcrumb
+categories: [project]
+---
+
+パンくずリストのコンポーネントです。横幅を超えると、折り返さず省略されます。
+
+```block
+<ol class="p-breadcrumb">
+  <li class="p-breadcrumb__item">
+    <a href="#" class="p-breadcrumb__link">home</a>
+  </li>
+  <li class="p-breadcrumb__item">
+    <a href="#" class="p-breadcrumb__link">page1</a>
+  </li>
+  <li class="p-breadcrumb__item">page2</li>
+</ol>
+```
+*/
+.p-breadcrumb {
+  overflow: hidden;
+  margin: 0;
+  padding-left: 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  list-style-type: none;
+}
+
+.p-breadcrumb__item {
+  display: inline-block;
+}
+
+.p-breadcrumb__item:last-child {
+  display: inline;
+}
+
+.p-breadcrumb__link {
+  display: inline-block;
+}
+
+/* 2つ目以降のリストの前に`>`を表示する。 */
+.p-breadcrumb__item:not(:first-of-type):before {
+  content: "\003E";
+  margin: 0 0.5em;
+}
+
+/* #Label
+   -------------------------------------------------------------------------- */
+/*doc
+---
+title: label
+name: label
+categories: [project]
+---
+
+インラインでメッセージを表示するコンポーネントです。
+
+```block
+<p><span class="p-label">タグ名</span></p>
+```
+*/
+.p-label {
+  display: inline-block;
+  padding: 0.5em;
+  color: #fff;
+  font-size: 0.8em;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  background-color: #2b70ba;
+}
+
+/* #Badge
+   -------------------------------------------------------------------------- */
+/*doc
+---
+title: badge
+name: badge
+categories: [project]
+---
+
+投稿数のような数値を表示するバッジコンポーネントです。
+
+```block
+<span class="p-badge">1</span>
+<span class="p-badge">10</span>
+<span class="p-badge">100</span>
+```
+*/
+.p-badge {
+  display: inline-block;
+  min-width: 2em;
+  min-height: 2em;
+  padding: 0 0.25em;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 0.8em;
+  line-height: 2em;
+  text-align: center;
+  vertical-align: top;
+  white-space: nowrap;
+  background-color: #2b70ba;
+}
+
+/* #Box
+   -------------------------------------------------------------------------- */
+/*doc
+---
+title: box
+name: box
+categories: [project]
+---
+
+画像やテキストなどを縦に並べるコンポーネントです。
+
+ラベルはデフォルトで右上に配置されます。Modifierで以下のように変更できます。
+
+- 右下 `.p-box__labels--right-bottom`
+- 左上 `.p-box__labels--left-top`
+- 左下 `.p-box__labels--left-bottom`
+
+```block
+<div class="p-box">
+  <div class="p-box__image">
+    <img src="http://lorempixel.com/600/400/" alt="">
+    <ul class="p-box__labels">
+      <li class="p-box__label p-label">ラベル1</li>
+      <li class="p-box__label p-label">ラベル2</li>
+    </ul>
+  </div>
+  <div class="p-box__content">
+    <h2>見出し</h2>
+    <p>文章</p>
+  </div>
+</div>
+```
+*/
+.p-box {
+  display: block;
+}
+
+.p-box:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.p-box__image {
+  position: relative;
+  display: block;
+}
+
+.p-box__image > img {
+  width: 100%;
+  max-width: none;
+}
+
+.p-box__labels {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.p-box__labels:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.p-box__labels--right-bottom {
+  top: auto;
+  bottom: 0;
+}
+
+.p-box__labels--left-top {
+  right: auto;
+  left: 0;
+}
+
+.p-box__labels--left-bottom {
+  top: auto;
+  right: auto;
+  bottom: 0;
+  left: 0;
+}
+
+.p-box__label {
+  float: left;
+}
+
+.p-box__content {
+  display: block;
+  padding: 0;
+}
+
+.p-box__content > :first-child {
+  margin-top: 0;
+}
+
+.p-box__content > :last-child {
+  margin-bottom: 0;
+}
+
+/* #Card
+   -------------------------------------------------------------------------- */
+/*doc
+---
+title: card
+name: card
+categories: [project]
+---
+
+カードタイプのコンポーネントです。
+
+```block
+<div class="c-layout c-layout--small">
+  <div class="c-layout__item u-6of12-md">
+    <div class="p-card">
+      <img src="http://lorempixel.com/640/340/" class="p-card__image-top">
+      <div class="p-card__body">
+        <h2>Card Object</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat illo autem, possimus obcaecati numquam sunt ut quas, repellat cum aspernatur voluptatem, a explicabo! Facilis sed quos, nisi rerum placeat ad?</p>
+      </div>
+      <ul class="p-card__list">
+        <li class="p-card__list-item">list1</li>
+        <li class="p-card__list-item">list2</li>
+      </ul>
+      <div class="p-card__foot">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit, est.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="c-layout__item u-6of12-md">
+    <div class="p-card">
+      <div class="p-card__head">
+        <h2>Card Object</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat illo autem, possimus obcaecati numquam sunt ut quas, repellat cum aspernatur voluptatem, a explicabo! Facilis sed quos, nisi rerum placeat ad?</p>
+      </div>
+      <ul class="p-card__list">
+        <li class="p-card__list-item">list1</li>
+        <li class="p-card__list-item">list2</li>
+      </ul>
+      <img src="http://lorempixel.com/640/340/" class="p-card__image-bottom">
+    </div>
+  </div>
+</div>
+```
+*/
+.p-card {
+  margin: 0 0 0.85rem;
+  padding: 0;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  list-style-type: none;
+}
+
+.p-card__head {
+  padding: 1.7rem;
+}
+
+.p-card__head > :last-child {
+  margin-bottom: 0;
+}
+
+.p-card__body {
+  padding: 1.7rem 1.7rem;
+}
+
+.p-card__body > :last-child {
+  margin-bottom: 0;
+}
+
+.p-card__foot {
+  padding: 1.7rem;
+  border-top: 1px solid #ddd;
+}
+
+.p-card__foot > :last-child {
+  margin-bottom: 0;
+}
+
+.p-card__image,
+.p-card__image-top,
+.p-card__image-bottom {
+  max-width: none;
+  width: 100%;
+}
+
+.p-card__head,
+.p-card__image-top {
+  border-radius: 2px 2px 0 0;
+}
+
+.p-card__foot,
+.p-card__image-bottom {
+  border-radius: 0 0 2px 2px;
+}
+
+.p-card__list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.p-card__list-item {
+  padding: 1.7rem;
+  border-top: 1px solid #ddd;
+}
+
+.p-card__list-link {
+  display: block;
+  margin: -1.7rem;
+  padding: 1.7rem;
+}
+
+/* -----------------------------------------------------------------------------
+   #Scope
+   -------------------------------------------------------------------------- */
+/**
+ * ComponentレイヤーやProjectレイヤーのようなコンポーネント単位ではなく、
+ * ページ単位や任意の範囲（スコープ）でのスタイルを定義します。1箇所でしか使わないような特異なスタイルや、
+ * ページ単位でComponentやProjectレイヤーのスタイルを微調整したい場合に使用してもかまいません。
+ * 例えばブログページのスタイルとして_blog.scssを作成します。
+ * このレイヤーでは`.s-blog p`のような要素セレクタとの結合子も使うこともできます。
+ * もし、このレイヤーで同じパターンが3箇所で使われていたら、
+ * ProjectレイヤーやUtilityレイヤーでまとめられないか検討しましょう。
+ * プレフィックス（接頭辞）として`s-`をつけます。
+ */
+/* #Blog
+   -------------------------------------------------------------------------- */
+/**
+ * ブログページのスタイルです。
+ */
+/* -----------------------------------------------------------------------------
+   #Utility
+   -------------------------------------------------------------------------- */
+/**
+ * Utilityレイヤーはいわゆる汎用クラスで、ほとんどの場合は単一のスタイルをもっています。
+ * コンポーネント間の間隔を調整したり、BEMのModifierが増えすぎるのを防ぎます。
+ * `.mb10`のような具体的な名前より`.mb-small`のような相対的な名前にしたり、
+ * pxよりもemや%で指定することを推奨します。
+ * 確実にスタイルを適応させるために`!important`を使用します。
+ * プレフィックス（接頭辞）として`u-`をつけます。
+ */
+/* -----------------------------------------------------------------------------
+   #Text
+   -------------------------------------------------------------------------- */
+/*doc
+---
+title: text
+name: text
+categories: [utility]
+---
+
+テキストのスタイルを指定する汎用クラスです。
+
+```block
+<p class="u-text-light">font-weight 300</p>
+<p class="u-text-normal">font-weight 400</p>
+<p class="u-text-bold">font-weight 600</p>
+<p class="u-text-indent">先頭の1文字目を1文字分字下げします。</p>
+<p class="u-text-note">2行目以降の1文字目を1文字分字下げします。<br>2行目以降の1文字目を1文字分字下げします。</p>
+<p class="u-text-nowrap">テキストを折り返させません。横幅を超えても、このテキストは折り返さずに表示されます。</p>
+<p class="u-text-breakword">テキストを折り返させます。長文になっても、このテキストは必ず折り返して表示されます。</p>
+<p class="u-text-justify">テキストを両端揃え（均等割り付け）させます。通常のテキストと文字間が違うのが分かると思います。</p>
+<p class="u-text-none">記述した通りに表示します。</p>
+<p class="u-text-lowercase">abcdEFGH すべての英単語を小文字で表示します。</p>
+<p class="u-text-uppercase">abcdEFGH すべての英単語を大文字で表示します。</p>
+<p class="u-text-capitalize">abcdEFGH 英単語の先頭を大文字で表示します。</p>
+<p class="u-text-smallcaps">abcdEFGH スモールキャップ（小文字と同じ高さで作られた大文字）で表示します。</p>
+<p class="u-text-vertical">abcdEFGH 縦書きで表示します。</p>
+<p class="u-text-vertical u-text-vertical--upright">abcdEFGH 英文も縦書きにする場合はModifierを指定します。</p>
+<p class="u-text-right">text-align right</p>
+<p class="u-text-center">text-align center</p>
+<p class="u-text-left">text-align left</p>
+<p class="u-text-top">vertical-align top</p>
+<p class="u-text-middle">vertical-align middle</p>
+<p class="u-text-bottom">vertical-align bottom</p>
+```
+*/
+/* font-weightを指定します。 */
+.u-text-light {
+  font-weight: 300 !important;
+}
+
+.u-text-normal {
+  font-weight: 400 !important;
+}
+
+.u-text-bold {
+  font-weight: 600 !important;
+}
+
+/* 先頭の1文字目を1文字分字下げします。 */
+.u-text-indent {
+  text-indent: 1em !important;
+}
+
+/* 2行目以降の1文字目を1文字分字下げします。 */
+.u-text-note {
+  margin-left: 1em !important;
+  text-indent: -1em !important;
+}
+
+/* テキストを改行させません。 */
+.u-text-nowrap {
+  white-space: nowrap !important;
+}
+
+/* テキストを改行させます。 */
+.u-text-breakword {
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+/* テキストを両端揃えさせます。 */
+.u-text-justify {
+  text-align: justify !important;
+  text-justify: inter-ideograph !important;
+}
+
+/* 記述した通りに表示します。 */
+.u-text-none {
+  text-transform: none !important;
+}
+
+/* すべての英単語を小文字にします。 */
+.u-text-lowercase {
+  text-transform: lowercase !important;
+}
+
+/* すべての英単語を大文字にします。 */
+.u-text-uppercase {
+  text-transform: uppercase !important;
+}
+
+/* 英単語の先頭を大文字にします。 */
+.u-text-capitalize {
+  text-transform: capitalize !important;
+}
+
+/* スモールキャップ（小文字と同じ高さで作られた大文字）にします。 */
+.u-text-smallcaps {
+  font-variant: small-caps !important;
+}
+
+/* 縦書きにします。 */
+.u-text-vertical {
+  -webkit-writing-mode: vertical-rl !important;
+      -ms-writing-mode: tb-rl !important;
+          writing-mode: vertical-rl !important;
+  text-orientation: mixed !important;
+}
+
+/* 英文も縦書きにする場合はModifierを指定します。 */
+.u-text-vertical--upright {
+  text-orientation: upright !important;
+}
+
+.u-text-right {
+  text-align: right !important;
+}
+
+.u-text-center {
+  text-align: center !important;
+}
+
+.u-text-left {
+  text-align: left !important;
+}
+
+.u-text-top {
+  vertical-align: top !important;
+}
+
+.u-text-middle {
+  vertical-align: middle !important;
+}
+
+.u-text-bottom {
+  vertical-align: bottom !important;
+}
+
+/* #Align
+   -------------------------------------------------------------------------- */
+/*doc
+---
+title: align
+name: align
+categories: [utility]
+---
+
+画像などを左右や中央に配置します。
+
+```block
+<div class="c-wrapper">
+  <img src="http://lorempixel.com/150/150/">
+  <img src="http://lorempixel.com/150/150/" class="u-align-center">
+  <img src="http://lorempixel.com/150/150/" class="u-align-right">
+</div>
+```
+*/
+.u-align-left {
+  display: block !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+.u-align-center {
+  display: block !important;
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+
+.u-align-right {
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: 0 !important;
+}
+
+/* #Margin
+   -------------------------------------------------------------------------- */
+/*doc
+---
+title: margin
+name: margin
+categories: [utility]
+---
+
+マージンで余白の管理をします。常に下方向にだけ余白をとります。
+`<section>`要素を使うようなセクションの余白はlayout/_section.scssで管理します。
+
+* `.u-mb`は常に余白をとります。
+* `.u-mb-gain`はあるブレイクポイント以上で余白を指定します。
+* `.u-mb-lose`はあるブレイクポイント以上で余白を無くします。
+
+サイズのバリエーションは最大で5つ、通常は3つとします。
+
+1. `tiny`(optional)
+2. `small`
+3. `medium`
+4. `large`
+5. `huge`(optional)
+
+```block
+<div class="u-mb-medium">
+  <p>Lorem ipsum</p>
+</div>
+
+<div class="u-mb-gain-medium">
+  <p>Lorem ipsum</p>
+</div>
+
+<div class="u-mb-lose-medium">
+  <p>Lorem ipsum</p>
+</div>
+```
+*/
+/* 常に余白を指定するクラス。 */
+.u-mb-small {
+  margin-bottom: 0.5em !important;
+}
+
+@media screen and (min-width: 768px) {
+  .u-mb-small {
+    margin-bottom: 1em !important;
+  }
+}
+
+.u-mb-medium {
+  margin-bottom: 1em !important;
+}
+
+@media screen and (min-width: 768px) {
+  .u-mb-medium {
+    margin-bottom: 2em !important;
+  }
+}
+
+.u-mb-large {
+  margin-bottom: 2em !important;
+}
+
+@media screen and (min-width: 768px) {
+  .u-mb-large {
+    margin-bottom: 4em !important;
+  }
+}
+
+/* ブレイクポイント以上で余白を指定するクラス。 */
+.u-mb-gain-small {
+  margin-bottom: 0 !important;
+}
+
+@media screen and (min-width: 768px) {
+  .u-mb-gain-small {
+    margin-bottom: 1em !important;
+  }
+}
+
+.u-mb-gain-medium {
+  margin-bottom: 0 !important;
+}
+
+@media screen and (min-width: 768px) {
+  .u-mb-gain-medium {
+    margin-bottom: 2em !important;
+  }
+}
+
+.u-mb-gain-large {
+  margin-bottom: 0 !important;
+}
+
+@media screen and (min-width: 768px) {
+  .u-mb-gain-large {
+    margin-bottom: 4em !important;
+  }
+}
+
+/* ブレイクポイント以上で余白を無くすクラス。 */
+.u-mb-lose-small {
+  margin-bottom: 0.5em !important;
+}
+
+@media screen and (min-width: 768px) {
+  .u-mb-lose-small {
+    margin-bottom: 0 !important;
+  }
+}
+
+.u-mb-lose-medium {
+  margin-bottom: 1em !important;
+}
+
+@media screen and (min-width: 768px) {
+  .u-mb-lose-medium {
+    margin-bottom: 0 !important;
+  }
+}
+
+.u-mb-lose-large {
+  margin-bottom: 2em !important;
+}
+
+@media screen and (min-width: 768px) {
+  .u-mb-lose-large {
+    margin-bottom: 0 !important;
+  }
+}
+
+/* #Display
+   -------------------------------------------------------------------------- */
+/*doc
+---
+title: display
+name: display
+categories: [utility]
+---
+
+表示非表示を切り替えます。改行位置のコントロールもできます。
+
+```block
+<p class="u-dn-md"><code>$-md</code>以降は非表示になります。</p>
+<p class="u-dn u-db-md"><code>$-md</code>以降は表示されます。</p>
+<p>基本はなりゆきでウィンドウサイズが狭くなると、<span class="u-dib">ここから改行されます。</span></p>
+<p><code>$-md</code>以降になると、<span class="u-db-md">ここから改行されます。</span></p>
+```
+*/
+.u-dn {
+  display: none !important;
+}
+
+@media screen and (min-width: 400px) {
+  .u-dn-sm {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .u-dn-md {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .u-dn-lg {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .u-dn-xl {
+    display: none !important;
+  }
+}
+
+.u-db {
+  display: block !important;
+}
+
+@media screen and (min-width: 400px) {
+  .u-db-sm {
+    display: block !important;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .u-db-md {
+    display: block !important;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .u-db-lg {
+    display: block !important;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .u-db-xl {
+    display: block !important;
+  }
+}
+
+.u-di {
+  display: inline !important;
+}
+
+@media screen and (min-width: 400px) {
+  .u-di-sm {
+    display: inline !important;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .u-di-md {
+    display: inline !important;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .u-di-lg {
+    display: inline !important;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .u-di-xl {
+    display: inline !important;
+  }
+}
+
+.u-dib {
+  display: inline-block !important;
+}
+
+@media screen and (min-width: 400px) {
+  .u-dib-sm {
+    display: inline-block !important;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .u-dib-md {
+    display: inline-block !important;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .u-dib-lg {
+    display: inline-block !important;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .u-dib-xl {
+    display: inline-block !important;
+  }
+}
+
+/* #Width
+   -------------------------------------------------------------------------- */
+/*doc
+---
+title: width
+name: width
+categories: [utility]
+---
+
+レスポンシブに対応した`width`プロパティを指定する汎用クラスです。
+
+@see - [trumps.width.scss](https://github.com/csswizardry/frcss/blob/master/_trumps.widths.scss)
+
+```block
+<div class="c-wrapper">
+  <div class="c-layout c-layout--medium" style="margin-bottom:1rem;">
+    <div class="c-layout__item u-8of12-md"><div style="background-color:lightblue;">c-layout__item u-8of12-md</div></div>
+    <div class="c-layout__item u-4of12-md"><div style="background-color:lightblue;">c-layout__item u-4of12-md</div></div>
+  </div>
+
+  <div class="c-layout c-layout--rev c-layout--medium" style="margin-bottom:1rem;">
+    <div class="c-layout__item u-8of12-md"><div style="background-color:lightblue;">c-layout--rev c-layout__item u-8of12-md</div></div>
+    <div class="c-layout__item u-4of12-md"><div style="background-color:lightblue;">c-layout--rev c-layout__item u-4of12-md</div></div>
+  </div>
+
+  <div class="c-layout c-layout--center c-layout--medium">
+    <div class="c-layout__item u-8of12-md"><div style="background-color:lightblue;">c-layout--center c-layout__item u-8of12-md</div></div>
+  </div>
+</div>
+```
+*/
+.u-1of12 {
+  width: 8.33333% !important;
+}
+
+.u-2of12 {
+  width: 16.66667% !important;
+}
+
+.u-3of12 {
+  width: 25% !important;
+}
+
+.u-4of12 {
+  width: 33.33333% !important;
+}
+
+.u-5of12 {
+  width: 41.66667% !important;
+}
+
+.u-6of12 {
+  width: 50% !important;
+}
+
+.u-7of12 {
+  width: 58.33333% !important;
+}
+
+.u-8of12 {
+  width: 66.66667% !important;
+}
+
+.u-9of12 {
+  width: 75% !important;
+}
+
+.u-10of12 {
+  width: 83.33333% !important;
+}
+
+.u-11of12 {
+  width: 91.66667% !important;
+}
+
+.u-12of12 {
+  width: 100% !important;
+}
+
+@media screen and (min-width: 400px) {
+  .u-1of12-sm {
+    width: 8.33333% !important;
+  }
+  .u-2of12-sm {
+    width: 16.66667% !important;
+  }
+  .u-3of12-sm {
+    width: 25% !important;
+  }
+  .u-4of12-sm {
+    width: 33.33333% !important;
+  }
+  .u-5of12-sm {
+    width: 41.66667% !important;
+  }
+  .u-6of12-sm {
+    width: 50% !important;
+  }
+  .u-7of12-sm {
+    width: 58.33333% !important;
+  }
+  .u-8of12-sm {
+    width: 66.66667% !important;
+  }
+  .u-9of12-sm {
+    width: 75% !important;
+  }
+  .u-10of12-sm {
+    width: 83.33333% !important;
+  }
+  .u-11of12-sm {
+    width: 91.66667% !important;
+  }
+  .u-12of12-sm {
+    width: 100% !important;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .u-1of12-md {
+    width: 8.33333% !important;
+  }
+  .u-2of12-md {
+    width: 16.66667% !important;
+  }
+  .u-3of12-md {
+    width: 25% !important;
+  }
+  .u-4of12-md {
+    width: 33.33333% !important;
+  }
+  .u-5of12-md {
+    width: 41.66667% !important;
+  }
+  .u-6of12-md {
+    width: 50% !important;
+  }
+  .u-7of12-md {
+    width: 58.33333% !important;
+  }
+  .u-8of12-md {
+    width: 66.66667% !important;
+  }
+  .u-9of12-md {
+    width: 75% !important;
+  }
+  .u-10of12-md {
+    width: 83.33333% !important;
+  }
+  .u-11of12-md {
+    width: 91.66667% !important;
+  }
+  .u-12of12-md {
+    width: 100% !important;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .u-1of12-lg {
+    width: 8.33333% !important;
+  }
+  .u-2of12-lg {
+    width: 16.66667% !important;
+  }
+  .u-3of12-lg {
+    width: 25% !important;
+  }
+  .u-4of12-lg {
+    width: 33.33333% !important;
+  }
+  .u-5of12-lg {
+    width: 41.66667% !important;
+  }
+  .u-6of12-lg {
+    width: 50% !important;
+  }
+  .u-7of12-lg {
+    width: 58.33333% !important;
+  }
+  .u-8of12-lg {
+    width: 66.66667% !important;
+  }
+  .u-9of12-lg {
+    width: 75% !important;
+  }
+  .u-10of12-lg {
+    width: 83.33333% !important;
+  }
+  .u-11of12-lg {
+    width: 91.66667% !important;
+  }
+  .u-12of12-lg {
+    width: 100% !important;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .u-1of12-xl {
+    width: 8.33333% !important;
+  }
+  .u-2of12-xl {
+    width: 16.66667% !important;
+  }
+  .u-3of12-xl {
+    width: 25% !important;
+  }
+  .u-4of12-xl {
+    width: 33.33333% !important;
+  }
+  .u-5of12-xl {
+    width: 41.66667% !important;
+  }
+  .u-6of12-xl {
+    width: 50% !important;
+  }
+  .u-7of12-xl {
+    width: 58.33333% !important;
+  }
+  .u-8of12-xl {
+    width: 66.66667% !important;
+  }
+  .u-9of12-xl {
+    width: 75% !important;
+  }
+  .u-10of12-xl {
+    width: 83.33333% !important;
+  }
+  .u-11of12-xl {
+    width: 91.66667% !important;
+  }
+  .u-12of12-xl {
+    width: 100% !important;
+  }
+}
+
+.u-wf {
+  width: 100% !important;
+}
+
+@media screen and (min-width: 400px) {
+  .u-wf-sm {
+    width: 100% !important;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .u-wf-md {
+    width: 100% !important;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .u-wf-lg {
+    width: 100% !important;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .u-wf-xl {
+    width: 100% !important;
+  }
+}
+
+.u-wa {
+  width: auto !important;
+}
+
+@media screen and (min-width: 400px) {
+  .u-wa-sm {
+    width: auto !important;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .u-wa-md {
+    width: auto !important;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .u-wa-lg {
+    width: auto !important;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .u-wa-xl {
+    width: auto !important;
+  }
+}
+
+/* #Offset
+   -------------------------------------------------------------------------- */
+/*doc
+---
+title: offset
+name: offset
+categories: [utility]
+---
+
+レスポンシブに対応した`margin-right`プロパティを指定する汎用クラスです。
+
+```block
+<div class="c-wrapper">
+  <div class="c-layout c-layout--medium c-layout--center" style="margin-bottom:1rem;">
+    <div class="c-layout__item u-4of12-md u-offset1of12-md"><div style="background-color:lightblue;">c-layout__item u-4of12-md u-offset1of12-md</div></div>
+    <div class="c-layout__item u-4of12-md"><div style="background-color:lightblue;">c-layout__item u-4of12-md</div></div>
+  </div>
+</div>
+```
+*/
+.u-offset1of12 {
+  margin-right: 8.33333% !important;
+}
+
+.u-offset2of12 {
+  margin-right: 16.66667% !important;
+}
+
+.u-offset3of12 {
+  margin-right: 25% !important;
+}
+
+.u-offset4of12 {
+  margin-right: 33.33333% !important;
+}
+
+.u-offset5of12 {
+  margin-right: 41.66667% !important;
+}
+
+.u-offset6of12 {
+  margin-right: 50% !important;
+}
+
+.u-offset7of12 {
+  margin-right: 58.33333% !important;
+}
+
+.u-offset8of12 {
+  margin-right: 66.66667% !important;
+}
+
+.u-offset9of12 {
+  margin-right: 75% !important;
+}
+
+.u-offset10of12 {
+  margin-right: 83.33333% !important;
+}
+
+.u-offset11of12 {
+  margin-right: 91.66667% !important;
+}
+
+.u-offset12of12 {
+  margin-right: 100% !important;
+}
+
+@media screen and (min-width: 400px) {
+  .u-offset1of12-sm {
+    margin-right: 8.33333% !important;
+  }
+  .u-offset2of12-sm {
+    margin-right: 16.66667% !important;
+  }
+  .u-offset3of12-sm {
+    margin-right: 25% !important;
+  }
+  .u-offset4of12-sm {
+    margin-right: 33.33333% !important;
+  }
+  .u-offset5of12-sm {
+    margin-right: 41.66667% !important;
+  }
+  .u-offset6of12-sm {
+    margin-right: 50% !important;
+  }
+  .u-offset7of12-sm {
+    margin-right: 58.33333% !important;
+  }
+  .u-offset8of12-sm {
+    margin-right: 66.66667% !important;
+  }
+  .u-offset9of12-sm {
+    margin-right: 75% !important;
+  }
+  .u-offset10of12-sm {
+    margin-right: 83.33333% !important;
+  }
+  .u-offset11of12-sm {
+    margin-right: 91.66667% !important;
+  }
+  .u-offset12of12-sm {
+    margin-right: 100% !important;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .u-offset1of12-md {
+    margin-right: 8.33333% !important;
+  }
+  .u-offset2of12-md {
+    margin-right: 16.66667% !important;
+  }
+  .u-offset3of12-md {
+    margin-right: 25% !important;
+  }
+  .u-offset4of12-md {
+    margin-right: 33.33333% !important;
+  }
+  .u-offset5of12-md {
+    margin-right: 41.66667% !important;
+  }
+  .u-offset6of12-md {
+    margin-right: 50% !important;
+  }
+  .u-offset7of12-md {
+    margin-right: 58.33333% !important;
+  }
+  .u-offset8of12-md {
+    margin-right: 66.66667% !important;
+  }
+  .u-offset9of12-md {
+    margin-right: 75% !important;
+  }
+  .u-offset10of12-md {
+    margin-right: 83.33333% !important;
+  }
+  .u-offset11of12-md {
+    margin-right: 91.66667% !important;
+  }
+  .u-offset12of12-md {
+    margin-right: 100% !important;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .u-offset1of12-lg {
+    margin-right: 8.33333% !important;
+  }
+  .u-offset2of12-lg {
+    margin-right: 16.66667% !important;
+  }
+  .u-offset3of12-lg {
+    margin-right: 25% !important;
+  }
+  .u-offset4of12-lg {
+    margin-right: 33.33333% !important;
+  }
+  .u-offset5of12-lg {
+    margin-right: 41.66667% !important;
+  }
+  .u-offset6of12-lg {
+    margin-right: 50% !important;
+  }
+  .u-offset7of12-lg {
+    margin-right: 58.33333% !important;
+  }
+  .u-offset8of12-lg {
+    margin-right: 66.66667% !important;
+  }
+  .u-offset9of12-lg {
+    margin-right: 75% !important;
+  }
+  .u-offset10of12-lg {
+    margin-right: 83.33333% !important;
+  }
+  .u-offset11of12-lg {
+    margin-right: 91.66667% !important;
+  }
+  .u-offset12of12-lg {
+    margin-right: 100% !important;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .u-offset1of12-xl {
+    margin-right: 8.33333% !important;
+  }
+  .u-offset2of12-xl {
+    margin-right: 16.66667% !important;
+  }
+  .u-offset3of12-xl {
+    margin-right: 25% !important;
+  }
+  .u-offset4of12-xl {
+    margin-right: 33.33333% !important;
+  }
+  .u-offset5of12-xl {
+    margin-right: 41.66667% !important;
+  }
+  .u-offset6of12-xl {
+    margin-right: 50% !important;
+  }
+  .u-offset7of12-xl {
+    margin-right: 58.33333% !important;
+  }
+  .u-offset8of12-xl {
+    margin-right: 66.66667% !important;
+  }
+  .u-offset9of12-xl {
+    margin-right: 75% !important;
+  }
+  .u-offset10of12-xl {
+    margin-right: 83.33333% !important;
+  }
+  .u-offset11of12-xl {
+    margin-right: 91.66667% !important;
+  }
+  .u-offset12of12-xl {
+    margin-right: 100% !important;
+  }
+}
+
+/* #Percent
+   -------------------------------------------------------------------------- */
+/*doc
+---
+title: percent
+name: percent
+categories: [utility]
+---
+
+`width`プロパティを5%刻みで指定する汎用クラスです。おもに`.c-table--fixed`と一緒に指定します。
+
+```block
+<div class="c-wrapper">
+  <table class="c-table c-table--medium c-table--fixed">
+    <tr>
+      <th class="u-percent50">th1</th>
+      <th>th2</th>
+      <th>th3</th>
+    </tr>
+    <tr>
+      <td>td1</td>
+      <td>td2</td>
+      <td>td3</td>
+    </tr>
+  </table>
+</div>
+```
+*/
+.u-percent5 {
+  width: 5% !important;
+}
+
+.u-percent10 {
+  width: 10% !important;
+}
+
+.u-percent15 {
+  width: 15% !important;
+}
+
+.u-percent20 {
+  width: 20% !important;
+}
+
+.u-percent25 {
+  width: 25% !important;
+}
+
+.u-percent30 {
+  width: 30% !important;
+}
+
+.u-percent35 {
+  width: 35% !important;
+}
+
+.u-percent40 {
+  width: 40% !important;
+}
+
+.u-percent45 {
+  width: 45% !important;
+}
+
+.u-percent50 {
+  width: 50% !important;
+}
+
+.u-percent55 {
+  width: 55% !important;
+}
+
+.u-percent60 {
+  width: 60% !important;
+}
+
+.u-percent65 {
+  width: 65% !important;
+}
+
+.u-percent70 {
+  width: 70% !important;
+}
+
+.u-percent75 {
+  width: 75% !important;
+}
+
+.u-percent80 {
+  width: 80% !important;
+}
+
+.u-percent85 {
+  width: 85% !important;
+}
+
+.u-percent90 {
+  width: 90% !important;
+}
+
+.u-percent95 {
+  width: 95% !important;
+}
+
+.u-percent100 {
+  width: 100% !important;
+}
+
+/* #Sr-only
+   -------------------------------------------------------------------------- */
+/*doc
+---
+title: sr-only
+name: sr-only
+categories: [utility]
+---
+
+要素を非表示にさせますが、スクリーンリーダーには読み上げられます。
+
+```block
+<div>
+  <span class="p-icon p-icon--rss" aria-hidden="true"></span>
+  <span class="u-sr-only">rss購読</span>
+</div>
+```
+*/
+.u-sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  border: 0 !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  clip: rect(0, 0, 0, 0) !important;
+}
+/*# sourceMappingURL=common.css.map */
