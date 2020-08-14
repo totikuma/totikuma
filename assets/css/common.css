@@ -87,6 +87,8 @@
 /* =============================================================================
    #Foundation
    ========================================================================== */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 /**
  * Foundationレイヤーでは`html`や`body`のような広範囲にわたるベーススタイル、
  * `h2`や`ul`のような基本的なタイプセレクタのデフォルトスタイルを定義します。
@@ -516,7 +518,7 @@ html {
 }
 
 html {
-  font-size: 15px;
+  font-size: 62.5%;
   line-height: 1.7;
 }
 
@@ -528,7 +530,7 @@ html {
 
 body {
   color: #000;
-  font-family: "Helvetica Neue", Helvetica, "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+  font-family: "Lato", Lato, "Noto Sans JP", Noto Sans JP;
   font-weight: 400;
   /* アンチエイリアスを指定する */
   -webkit-font-smoothing: subpixel-antialiased;
@@ -537,6 +539,8 @@ body {
   -webkit-font-kerning: normal;
           font-kerning: normal;
   background-color: #fff;
+  -webkit-font-feature-settings: "palt";
+          font-feature-settings: "palt";
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -680,6 +684,23 @@ categories: [layout]
 </body>
 ```
 */
+.l-header {
+  height: 84px;
+  width: 100%;
+  max-width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: fixed;
+  top: 0;
+}
+
 /* #Footer
    -------------------------------------------------------------------------- */
 /*doc
@@ -709,6 +730,21 @@ categories: [layout]
 </body>
 ```
 */
+.l-footer {
+  height: 84px;
+  width: 100%;
+  max-width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 /* #Main
    -------------------------------------------------------------------------- */
 /*doc
@@ -2672,6 +2708,54 @@ categories: [project]
   display: block;
   margin: -1.7rem;
   padding: 1.7rem;
+}
+
+.p-header {
+  color: #fff;
+  background-color: #363636;
+  padding: 0 5em;
+}
+
+.p-header ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+}
+
+.p-header ul li {
+  margin: 1rem;
+}
+
+.p-footer {
+  color: #fff;
+  background-color: #363636;
+}
+
+.p-footer ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  list-style: none;
+}
+
+.p-footer ul li {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.p-footer ul li:nth-child(1) {
+  padding-right: 1.8rem;
+}
+
+.p-footer ul li:nth-child(3) {
+  padding: 0rem;
 }
 
 /* -----------------------------------------------------------------------------

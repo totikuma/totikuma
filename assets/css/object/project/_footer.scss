@@ -1,0 +1,19 @@
+.p-footer{
+color: #fff;
+background-color: #363636;
+ul{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+        li{
+                box-sizing: border-box;
+                &:nth-child(1){
+                        padding-right: 1.8rem;
+                }
+                &:nth-child(3){
+                        padding: 0rem;
+                }
+        }
+}
+}

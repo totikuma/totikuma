@@ -20,7 +20,7 @@ html {
 }
 
 html {
-  font-size: map-get($_font-size, sm);
+  font-size: 62.5%;
   line-height: 1.7;
   @include _mq-up() {
     font-size: map-get($_font-size, md);
@@ -29,7 +29,7 @@ html {
 
 body {
   color: $_color-text;
-  font-family: $_font-family-sans-serif-1;
+  font-family: $_font-family-serif-7,$_font-family-sans-serif-6;
   font-weight: $_font-weight-normal;
   /* アンチエイリアスを指定する */
   -webkit-font-smoothing: subpixel-antialiased;
@@ -37,6 +37,7 @@ body {
   /* メトリクスカーニングを指定する */
   font-kerning: normal;
   background-color: $_color-bg;
+  font-feature-settings: "palt";
 }
 
 h1, h2, h3, h4, h5, h6 {
