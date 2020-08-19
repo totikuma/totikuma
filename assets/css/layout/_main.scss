@@ -19,6 +19,35 @@ categories: [layout]
 </body>
 ```
 */
-#l-main {
+.l-main {
+box-sizing: border-box;
+padding-top: 10rem;
+width: 100vw;
 
+display: grid;
+grid-template-columns: 77vw 1fr;
+
+&__left{
+  
+&__hero{
+  position: relative;
+  &__pic{
+img{
+  height: 800px;
+  width: 100%;
+  object-fit: cover;
+  object-position: -5em 50%;
+}
+  }
+&__badge{
+  position: absolute;
+  top: 15%;
+  left: 85%;
+}
+}
+}
+&__right{
+  display: grid;
+  grid-auto-rows: 800px 1fr;
+}
 }

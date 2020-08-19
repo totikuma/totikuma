@@ -1,0 +1,21 @@
+.c-badge {
+    display: flex;
+
+    &__left {
+        ul {
+            li {
+                padding-top: 1.1rem;
+                list-style: none;
+            }
+        }
+    }
+
+    &__right {
+        display: flex;
+        justify-content: space-between;
+        width: 14em;
+        height: fit-content;
+        margin-top: 5.2em;
+        margin-left: -8em;
+    }
+}

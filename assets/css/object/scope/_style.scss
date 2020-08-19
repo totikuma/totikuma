@@ -1,0 +1,38 @@
+.s-about{
+padding: 5rem;
+p{
+    padding:1em;
+}
+}
+.s-garelly{
+background-color: #363636;
+width: 100vw;
+
+h2{
+    width: 75%;
+    padding: 5rem;
+    text-align: end;
+}
+>div{
+    display: flex;
+    flex-wrap: wrap;
+    width: 75%;
+    
+    picture{
+        display: flex;
+        height: 270px;
+       width: 20%;
+       margin: 1.2em;
+       img{
+        max-width: 100%;
+           object-fit: cover;
+       }
+    }
+}
+}
+.s-contact{
+    padding: 5rem;
+    dl{
+        padding:1em;
+    }
+}

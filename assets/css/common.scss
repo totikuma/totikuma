@@ -188,6 +188,7 @@
 @import "object/component/_embed";
 @import "object/component/_ratio";
 @import "object/component/_table";
+@import "object/component/_gbadge";
 
 /* -----------------------------------------------------------------------------
    #Project
@@ -208,6 +209,7 @@
 @import "object/project/_card";
 @import "object/project/_header";
 @import "object/project/_footer";
+
 /* -----------------------------------------------------------------------------
    #Scope
    -------------------------------------------------------------------------- */
@@ -222,6 +224,7 @@
  * プレフィックス（接頭辞）として`s-`をつけます。
  */
 @import "object/scope/_blog";
+@import "object/scope/_style";
 
 /* -----------------------------------------------------------------------------
    #Utility
