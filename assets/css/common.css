@@ -767,7 +767,7 @@ categories: [layout]
 .l-main {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  padding-top: 10rem;
+  padding-top: 5.2rem;
   width: 100vw;
   display: -ms-grid;
   display: grid;
@@ -2836,13 +2836,42 @@ categories: [project]
 /**
  * ブログページのスタイルです。
  */
+.s-blog {
+  position: relative;
+}
+
+.s-blog::before {
+  content: url('data:image/svg+xml;utf-8,<svg width="7" height="1899" viewBox="0 0 7 1899" fill="none" xmlns="http://www.w3.org/2000/svg">\a   <g style="mix-blend-mode:difference">\a   <path d="M3.50024 0.999878L3.50024 1898" stroke="black"/>\a   </g>\a   </svg>\a     ');
+  position: absolute;
+  top: 5%;
+  left: -5%;
+}
+
 .s-blog ul li {
   list-style: none;
   padding: 2.5em;
 }
 
 .s-about {
+  margin: 10rem;
   padding: 5rem;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  position: relative;
+}
+
+.s-about::before {
+  content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">\a   <line x1="25.5" x2="25.5" y2="92" stroke="black"/>\a   <path d="M0 27L159 27" stroke="black"/>\a   </svg>\a   ');
+  position: absolute;
+  top: -35%;
+}
+
+.s-about::after {
+  content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">\a     <line x1="133.5" y1="92" x2="133.5" stroke="black"/>\a     <path d="M159 65H0" stroke="black"/>\a     </svg>\a     ');
+  position: absolute;
+  right: 0;
+  bottom: -35%;
 }
 
 .s-about p {
@@ -2855,8 +2884,9 @@ categories: [project]
 }
 
 .s-garelly h2 {
-  width: 75%;
+  width: 72%;
   padding: 5rem;
+  margin-right: 10rem;
   text-align: end;
 }
 
@@ -2867,6 +2897,9 @@ categories: [project]
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   width: 75%;
+  padding-bottom: 5rem;
+  padding-left: 5rem;
+  padding-right: 1rem;
 }
 
 .s-garelly > div picture {
@@ -2885,7 +2918,25 @@ categories: [project]
 }
 
 .s-contact {
+  margin: 10rem;
   padding: 5rem;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  position: relative;
+}
+
+.s-contact::before {
+  content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">\a         <line x1="25.5" x2="25.5" y2="92" stroke="black"/>\a         <path d="M0 27L159 27" stroke="black"/>\a         </svg>\a         ');
+  position: absolute;
+  top: -35%;
+}
+
+.s-contact::after {
+  content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">\a           <line x1="133.5" y1="92" x2="133.5" stroke="black"/>\a           <path d="M159 65H0" stroke="black"/>\a           </svg>\a           ');
+  position: absolute;
+  right: 0;
+  bottom: -35%;
 }
 
 .s-contact dl {

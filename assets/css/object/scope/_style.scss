@@ -1,5 +1,28 @@
 .s-about{
+    margin: 10rem;
 padding: 5rem;
+height: fit-content;
+position: relative;
+&::before{
+  content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <line x1="25.5" x2="25.5" y2="92" stroke="black"/>
+  <path d="M0 27L159 27" stroke="black"/>
+  </svg>
+  ');
+  position: absolute;
+  top: -35%;
+}
+&::after{
+    content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <line x1="133.5" y1="92" x2="133.5" stroke="black"/>
+    <path d="M159 65H0" stroke="black"/>
+    </svg>
+    ');
+    
+    position: absolute;
+    right: 0;
+    bottom:-35%;
+}
 p{
     padding:1em;
 }
@@ -9,15 +32,18 @@ background-color: #363636;
 width: 100vw;
 
 h2{
-    width: 75%;
+    width: 72%;
     padding: 5rem;
+    margin-right: 10rem;
     text-align: end;
 }
 >div{
     display: flex;
     flex-wrap: wrap;
     width: 75%;
-    
+    padding-bottom:5rem;
+    padding-left:5rem;
+    padding-right: 1rem;
     picture{
         display: flex;
         height: 270px;
@@ -31,7 +57,30 @@ h2{
 }
 }
 .s-contact{
+    margin:10rem;
     padding: 5rem;
+    height: fit-content;
+    position: relative;
+    &::before{
+        content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="25.5" x2="25.5" y2="92" stroke="black"/>
+        <path d="M0 27L159 27" stroke="black"/>
+        </svg>
+        ');
+        position: absolute;
+        top: -35%;
+      }
+      &::after{
+          content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="133.5" y1="92" x2="133.5" stroke="black"/>
+          <path d="M159 65H0" stroke="black"/>
+          </svg>
+          ');
+          
+          position: absolute;
+          right: 0;
+          bottom:-35%;
+      }
     dl{
         padding:1em;
     }
