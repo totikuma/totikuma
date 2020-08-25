@@ -2772,7 +2772,7 @@ categories: [project]
 
 .p-header {
   color: #fff;
-  background-color: #363636;
+  background-color: rgba(54, 54, 54, 0.7);
   padding: 0 5em;
 }
 
