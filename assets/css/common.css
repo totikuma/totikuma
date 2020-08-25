@@ -2787,6 +2787,21 @@ categories: [project]
   margin: 1rem;
 }
 
+.p-header ul li a {
+  border: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  color: #fff;
+  text-decoration: none;
+}
+
+.p-header ul li a:hover {
+  color: coral;
+  -webkit-transition: 80ms;
+  transition: 80ms;
+}
+
 .p-footer {
   color: #fff;
   background-color: #363636;

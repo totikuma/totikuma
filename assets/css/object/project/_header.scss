@@ -8,6 +8,16 @@ ul{
     
     li{
         margin: 1rem;
+        a{
+            border: 0;
+            appearance: none;
+            color: #fff;
+            text-decoration: none;
+            &:hover{
+                color: coral;
+                transition: 80ms;
+            }
+        }
     }
 }
 }
