@@ -2879,18 +2879,18 @@ categories: [project]
 .s-about::before {
   content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">\a   <line x1="25.5" x2="25.5" y2="92" stroke="black"/>\a   <path d="M0 27L159 27" stroke="black"/>\a   </svg>\a   ');
   position: absolute;
-  top: -35%;
+  top: -30%;
 }
 
 .s-about::after {
   content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">\a     <line x1="133.5" y1="92" x2="133.5" stroke="black"/>\a     <path d="M159 65H0" stroke="black"/>\a     </svg>\a     ');
   position: absolute;
   right: 0;
-  bottom: -35%;
+  bottom: -30%;
 }
 
 .s-about p {
-  padding: 1em;
+  padding: 2em;
 }
 
 .s-garelly {
@@ -2944,18 +2944,27 @@ categories: [project]
 .s-contact::before {
   content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">\a         <line x1="25.5" x2="25.5" y2="92" stroke="black"/>\a         <path d="M0 27L159 27" stroke="black"/>\a         </svg>\a         ');
   position: absolute;
-  top: -35%;
+  top: -30%;
 }
 
 .s-contact::after {
   content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">\a           <line x1="133.5" y1="92" x2="133.5" stroke="black"/>\a           <path d="M159 65H0" stroke="black"/>\a           </svg>\a           ');
   position: absolute;
   right: 0;
-  bottom: -35%;
+  bottom: -30%;
 }
 
 .s-contact dl {
-  padding: 1em;
+  padding: 2em;
+}
+
+.s-contact dl dt {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.s-contact dl dd ul {
+  margin-top: 1em;
 }
 
 /* -----------------------------------------------------------------------------
@@ -4056,5 +4065,12 @@ categories: [utility]
   overflow: hidden !important;
   padding: 0 !important;
   clip: rect(0, 0, 0, 0) !important;
+}
+
+.u-zoom:hover {
+  -webkit-transform: scale(1.5, 1.5);
+          transform: scale(1.5, 1.5);
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
 }
 /*# sourceMappingURL=common.css.map */

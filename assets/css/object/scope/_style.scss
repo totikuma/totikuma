@@ -10,7 +10,7 @@ position: relative;
   </svg>
   ');
   position: absolute;
-  top: -35%;
+  top: -30%;
 }
 &::after{
     content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -18,13 +18,13 @@ position: relative;
     <path d="M159 65H0" stroke="black"/>
     </svg>
     ');
-    
+
     position: absolute;
     right: 0;
-    bottom:-35%;
+    bottom:-30%;
 }
 p{
-    padding:1em;
+    padding:2em;
 }
 }
 .s-garelly{
@@ -61,6 +61,7 @@ h2{
     padding: 5rem;
     height: fit-content;
     position: relative;
+
     &::before{
         content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">
         <line x1="25.5" x2="25.5" y2="92" stroke="black"/>
@@ -68,7 +69,7 @@ h2{
         </svg>
         ');
         position: absolute;
-        top: -35%;
+        top: -30%;
       }
       &::after{
           content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -76,12 +77,22 @@ h2{
           <path d="M159 65H0" stroke="black"/>
           </svg>
           ');
-          
+
           position: absolute;
           right: 0;
-          bottom:-35%;
+          bottom:-30%;
       }
     dl{
-        padding:1em;
+        padding:2em;
+        dt{
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        dd{
+
+            ul{
+                margin-top: 1em;
+            }
+        }
     }
 }
