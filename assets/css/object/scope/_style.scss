@@ -1,6 +1,6 @@
 .s-about{
     margin: 10rem;
-padding: 5rem;
+padding: 3rem;
 font-size: 1.2rem;
 height: fit-content;
 position: relative;
@@ -24,7 +24,7 @@ position: relative;
     ');
 
     position: absolute;
-    right: 0;
+    right: 7%;
     bottom:-30%;
 }
 p{
@@ -70,7 +70,7 @@ h2{
 }
 .s-contact{
     margin:10rem;
-    padding: 5rem;
+    padding: 3rem;
     height: fit-content;
     position: relative;
 font-size: 1.2rem;
@@ -84,7 +84,7 @@ font-size: 1.2rem;
         </svg>
         ');
         position: absolute;
-        top: -30%;
+        top: -20%;
         @include _mq-down(xl){
 top: -15%;
         }
@@ -96,8 +96,8 @@ top: -15%;
           </svg>
           ');
           position: absolute;
-          right: 0;
-          bottom:-30%;
+          right: 7%;
+          bottom:-20%;
           @include _mq-down(xl){
             bottom: -15%;
                     }
