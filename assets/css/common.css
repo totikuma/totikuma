@@ -527,7 +527,7 @@ body {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   color: #000;
-  font-family: "Lato", Lato, "Noto Sans JP", Noto Sans JP;
+  font-family: "Noto Sans JP", "Lato", Meiryo, sans-serif;
   font-weight: 400;
   /* アンチエイリアスを指定する */
   -webkit-font-smoothing: subpixel-antialiased;
@@ -775,8 +775,26 @@ categories: [layout]
       grid-template-columns: 77vw 1fr;
 }
 
+@media screen and (max-width: 767px) {
+  .l-main {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
 .l-main__left__hero {
   position: relative;
+}
+
+@media screen and (max-width: 767px) {
+  .l-main__left__hero {
+    position: inherit;
+  }
 }
 
 .l-main__left__hero__pic img {
@@ -794,10 +812,22 @@ categories: [layout]
   left: 85%;
 }
 
+@media screen and (max-width: 767px) {
+  .l-main__left__hero__badge {
+    position: inherit;
+  }
+}
+
 .l-main__right {
   display: -ms-grid;
   display: grid;
   grid-auto-rows: 800px 1fr;
+}
+
+@media screen and (max-width: 767px) {
+  .l-main__right {
+    display: block;
+  }
 }
 
 /* #Content
@@ -2870,10 +2900,17 @@ categories: [project]
 .s-about {
   margin: 10rem;
   padding: 5rem;
+  font-size: 1.2rem;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   position: relative;
+}
+
+@media screen and (max-width: 767px) {
+  .s-about {
+    font-size: 1.8em;
+  }
 }
 
 .s-about::before {
@@ -2917,6 +2954,12 @@ categories: [project]
   padding-right: 1rem;
 }
 
+@media screen and (max-width: 767px) {
+  .s-garelly > div {
+    width: 100%;
+  }
+}
+
 .s-garelly > div picture {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2924,6 +2967,14 @@ categories: [project]
   height: 270px;
   width: 20%;
   margin: 1.2em;
+}
+
+@media screen and (max-width: 767px) {
+  .s-garelly > div picture {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
 }
 
 .s-garelly > div picture img {
@@ -2939,6 +2990,13 @@ categories: [project]
   height: -moz-fit-content;
   height: fit-content;
   position: relative;
+  font-size: 1.2rem;
+}
+
+@media screen and (max-width: 767px) {
+  .s-contact {
+    font-size: 1.8em;
+  }
 }
 
 .s-contact::before {
@@ -2947,11 +3005,23 @@ categories: [project]
   top: -30%;
 }
 
+@media screen and (max-width: 1199px) {
+  .s-contact::before {
+    top: -15%;
+  }
+}
+
 .s-contact::after {
   content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">\a           <line x1="133.5" y1="92" x2="133.5" stroke="black"/>\a           <path d="M159 65H0" stroke="black"/>\a           </svg>\a           ');
   position: absolute;
   right: 0;
   bottom: -30%;
+}
+
+@media screen and (max-width: 1199px) {
+  .s-contact::after {
+    bottom: -15%;
+  }
 }
 
 .s-contact dl {

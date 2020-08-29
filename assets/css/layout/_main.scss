@@ -26,11 +26,17 @@ width: 100vw;
 
 display: grid;
 grid-template-columns: 77vw 1fr;
-
+@include _mq-down(md){
+  display: flex;
+  flex-direction: column;
+}
 &__left{
   
 &__hero{
   position: relative;
+  @include _mq-down(md){
+    position: inherit;
+  }
   &__pic{
 img{
   height: 800px;
@@ -43,11 +49,18 @@ img{
   position: absolute;
   top: 15%;
   left: 85%;
+  @include _mq-down(md){
+    position: inherit;
+  }
 }
 }
 }
 &__right{
   display: grid;
   grid-auto-rows: 800px 1fr;
+  @include _mq-down(md){
+    display: block;
+    
+  }
 }
 }
