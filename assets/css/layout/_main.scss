@@ -51,6 +51,9 @@ img{
   left: 85%;
   @include _mq-down(md){
     position: inherit;
+    display: flex;
+    justify-content: center;
+    padding-top: 5rem;
   }
 }
 }

@@ -815,6 +815,13 @@ categories: [layout]
 @media screen and (max-width: 767px) {
   .l-main__left__hero__badge {
     position: inherit;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding-top: 5rem;
   }
 }
 
@@ -2883,6 +2890,9 @@ categories: [project]
  */
 .s-blog {
   position: relative;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
 }
 
 .s-blog::before {
@@ -2895,6 +2905,10 @@ categories: [project]
 .s-blog ul li {
   list-style: none;
   padding: 2.5em;
+}
+
+.s-blog ul li iframe {
+  background: none;
 }
 
 .s-about {
