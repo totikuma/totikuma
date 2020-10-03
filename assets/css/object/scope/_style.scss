@@ -1,12 +1,16 @@
 .s-about{
-    margin: 10rem;
-padding: 3rem;
+    margin: 10em;
+padding: 3em;
 font-size: 1.2rem;
 height: fit-content;
 position: relative;
 @include _mq-down(md){
     font-size: 1.8em;
+    margin: 3em;
   }
+  @include _mq-down(sm) {
+    margin: 1em;
+    }
 &::before{
   content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">
   <line x1="25.5" x2="25.5" y2="92" stroke="black"/>
@@ -76,7 +80,11 @@ h2{
 font-size: 1.2rem;
 @include _mq-down(md){
     font-size: 1.8em;
+    margin: 3em;
   }
+  @include _mq-down(sm) {
+    margin: 1em;
+    }
     &::before{
         content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">
         <line x1="25.5" x2="25.5" y2="92" stroke="black"/>

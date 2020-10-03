@@ -34,4 +34,8 @@ categories: [layout]
   display: flex;
   justify-content: center;
   align-items: center;
+  @include _mq-down(sm){
+    min-width: 340px;
+  }
+
 }

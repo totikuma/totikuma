@@ -37,4 +37,12 @@ align-items: center;
 position: fixed;
 top: 0;
 z-index: 999;
+@include _mq-down(md){
+  width: 100vw;
+}
+@include _mq-down(sm){
+  
+  min-width: 340px;
+}
+
 }
