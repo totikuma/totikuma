@@ -1,6 +1,6 @@
  /* #Main
    -------------------------------------------------------------------------- */
-/*doc
+ /*doc
 ---
 title: main
 name: main
@@ -19,51 +19,59 @@ categories: [layout]
 </body>
 ```
 */
-.l-main {
-box-sizing: border-box;
-padding-top: 5.2rem;
-width: 100vw;
+ .l-main {
+   box-sizing: border-box;
+   padding-top: 5.2rem;
+   width: 100vw;
 
-display: grid;
-grid-template-columns: 77vw 1fr;
-@include _mq-down(md){
-  display: flex;
-  flex-direction: column;
-}
-&__left{
-  
-&__hero{
-  position: relative;
-  @include _mq-down(md){
-    position: inherit;
-  }
-  &__pic{
-img{
-  height: 800px;
-  width: 100%;
-  object-fit: cover;
-  object-position: -5em 50%;
-}
-  }
-&__badge{
-  position: absolute;
-  top: 15%;
-  left: 85%;
-  @include _mq-down(md){
-    position: inherit;
-    display: flex;
-    justify-content: center;
-    padding-top: 5rem;
-  }
-}
-}
-}
-&__right{
-  display: grid;
-  grid-auto-rows: 800px 1fr;
-  @include _mq-down(md){
-    display: block;
-    
-  }
-}
-}
+   display: grid;
+   grid-template-columns: 77vw 1fr;
+
+   @include _mq-down(md) {
+     display: flex;
+     flex-direction: column;
+   }
+
+   &__left {
+
+     &__hero {
+       position: relative;
+
+       @include _mq-down(md) {
+         position: inherit;
+       }
+
+       &__pic {
+         img {
+           height: 800px;
+           width: 100%;
+           object-fit: cover;
+           object-position: -5em 50%;
+         }
+       }
+
+       &__badge {
+         position: absolute;
+         top: 15%;
+         left: 85%;
+
+         @include _mq-down(md) {
+           position: inherit;
+           display: flex;
+           justify-content: center;
+           padding-top: 5rem;
+         }
+       }
+     }
+   }
+
+   &__right {
+     display: grid;
+     grid-auto-rows: 800px 1fr;
+
+     @include _mq-down(md) {
+       display: block;
+
+     }
+   }
+ }

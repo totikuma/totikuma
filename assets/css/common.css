@@ -2873,8 +2873,8 @@ categories: [project]
   .p-header #menuToggle {
     display: block;
     position: relative;
-    top: 50px;
-    left: 50px;
+    top: 5px;
+    left: 10px;
     z-index: 1;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -2956,8 +2956,8 @@ categories: [project]
     /* to stop flickering of text in safari */
     -webkit-transform-origin: 0% 0%;
             transform-origin: 0% 0%;
-    -webkit-transform: translate(100%, 0);
-            transform: translate(100%, 0);
+    -webkit-transform: translate(45%, 0);
+            transform: translate(45%, 0);
     -webkit-transition: -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
     transition: -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
     transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
@@ -2968,8 +2968,8 @@ categories: [project]
     font-size: 22px;
   }
   .p-header #menuToggle input:checked ~ ul {
-    -webkit-transform: none;
-            transform: none;
+    -webkit-transform: translate(-35%, 0%);
+            transform: translate(-35%, 0%);
   }
 }
 
