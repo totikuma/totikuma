@@ -16,14 +16,20 @@
 
     &::before {
         content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">
-<line x1="25.5"x2="25.5"y2="92"stroke="black"/> <path d="M0 27L159 27"stroke="black"/> </svg> ');
+        <line x1="25.5" x2="25.5" y2="92" stroke="black"/>
+        <path d="M0 27L159 27" stroke="black"/>
+        </svg>
+        ');
 position: absolute;
                 top: -30%;
         }
 
         &::after {
             content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">
-<line x1="133.5"y1="92"x2="133.5"stroke="black"/> <path d="M159 65H0"stroke="black"/> </svg> ');
+            <line x1="133.5" y1="92" x2="133.5" stroke="black"/>
+            <path d="M159 65H0" stroke="black"/>
+            </svg>
+            ');
 
                 position: absolute;
                 right: 7%;
@@ -101,7 +107,10 @@ position: absolute;
 
             &::before {
                 content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">
-<line x1="25.5"x2="25.5"y2="92"stroke="black"/> <path d="M0 27L159 27"stroke="black"/> </svg> ');
+                <line x1="25.5" x2="25.5" y2="92" stroke="black"/>
+                <path d="M0 27L159 27" stroke="black"/>
+                </svg>
+                ');
 position: absolute;
                     top: -20%;
 
@@ -112,7 +121,10 @@ position: absolute;
 
                 &::after {
                     content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">
-<line x1="133.5"y1="92"x2="133.5"stroke="black"/> <path d="M159 65H0"stroke="black"/> </svg> ');
+                    <line x1="133.5" y1="92" x2="133.5" stroke="black"/>
+                    <path d="M159 65H0" stroke="black"/>
+                    </svg>
+                    ');
 position: absolute;
                         right: 7%;
                         bottom:-20%;
