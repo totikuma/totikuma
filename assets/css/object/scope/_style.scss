@@ -1,126 +1,144 @@
-.s-about{
+.s-about {
     margin: 10em;
-padding: 3em;
-font-size: 1.2rem;
-height: fit-content;
-position: relative;
-@include _mq-down(md){
-    font-size: 1.8em;
-    margin: 3em;
-  }
-  @include _mq-down(sm) {
-    margin: 1em;
-    }
-&::before{
-  content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <line x1="25.5" x2="25.5" y2="92" stroke="black"/>
-  <path d="M0 27L159 27" stroke="black"/>
-  </svg>
-  ');
-  position: absolute;
-  top: -30%;
-}
-&::after{
-    content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <line x1="133.5" y1="92" x2="133.5" stroke="black"/>
-    <path d="M159 65H0" stroke="black"/>
-    </svg>
-    ');
-
-    position: absolute;
-    right: 7%;
-    bottom:-30%;
-}
-p{
-    padding:2em;
-}
-}
-.s-garelly{
-background-color: #363636;
-width: 100vw;
-
-h2{
-    width: 72%;
-    padding: 5rem;
-    margin-right: 10rem;
-    text-align: end;
-}
->div{
-    display: flex;
-    flex-wrap: wrap;
-    width: 75%;
-    padding-bottom:5rem;
-    padding-left:5rem;
-    padding-right: 1rem;
-    @include _mq-down(md){
-        width: 100%;
-      }
-    picture{
-        display: flex;
-        height: 270px;
-       width: 20%;
-       margin: 1.2em;
-       @include _mq-down(md){
-        display: block;
-        width:100%;
-        height: auto;
-      }
-       img{
-        max-width: 100%;
-           object-fit: cover;
-       }
-    }
-}
-}
-.s-contact{
-    margin:10rem;
-    padding: 3rem;
+    padding: 3em;
+    font-size: 1.2rem;
     height: fit-content;
     position: relative;
-font-size: 1.2rem;
-@include _mq-down(md){
-    font-size: 1.8em;
-    margin: 3em;
-  }
-  @include _mq-down(sm) {
-    margin: 1em;
-    }
-    &::before{
-        content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <line x1="25.5" x2="25.5" y2="92" stroke="black"/>
-        <path d="M0 27L159 27" stroke="black"/>
-        </svg>
-        ');
-        position: absolute;
-        top: -20%;
-        @include _mq-down(xl){
-top: -15%;
-        }
-      }
-      &::after{
-          content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <line x1="133.5" y1="92" x2="133.5" stroke="black"/>
-          <path d="M159 65H0" stroke="black"/>
-          </svg>
-          ');
-          position: absolute;
-          right: 7%;
-          bottom:-20%;
-          @include _mq-down(xl){
-            bottom: -15%;
-                    }
-      }
-    dl{
-        padding:2em;
-        dt{
-            font-weight: bold;
-            font-size: 1.2em;
-        }
-        dd{
 
-            ul{
-                margin-top: 1em;
+    @include _mq-down(md) {
+        font-size: 1.8em;
+        margin: 5em 3em;
+    }
+
+    @include _mq-down(sm) {
+        margin: 5em 0.5em;
+    }
+
+    &::before {
+        content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+<line x1="25.5"x2="25.5"y2="92"stroke="black"/> <path d="M0 27L159 27"stroke="black"/> </svg> ');
+position: absolute;
+                top: -30%;
+        }
+
+        &::after {
+            content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+<line x1="133.5"y1="92"x2="133.5"stroke="black"/> <path d="M159 65H0"stroke="black"/> </svg> ');
+
+                position: absolute;
+                right: 7%;
+                bottom:-30%;
+            }
+
+            p {
+                padding:2em;
+
+                @include _mq-down(sm) {
+                    padding: 0.5em;
+                }
             }
         }
-    }
-}
+
+        .s-garelly {
+            background-color: #363636;
+            width: 100vw;
+
+            h2 {
+                width: 72%;
+                padding: 5rem;
+                margin-right: 10rem;
+                text-align: end;
+            }
+
+            >div {
+                display: flex;
+                flex-wrap: wrap;
+                width: 75%;
+                padding-bottom:5rem;
+                padding-left:5rem;
+                padding-right: 1rem;
+
+                @include _mq-down(md) {
+                    width: 100%;
+                    padding-right: 5rem;
+                }
+
+                picture {
+                    display: flex;
+                    height: 270px;
+                    width: 20%;
+                    margin: 1.2em;
+
+                    @include _mq-down(md) {
+                        display: block;
+                        width:100%;
+                        height: auto;
+                    }
+
+                    img {
+                        max-width: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+        }
+
+        .s-contact {
+            margin:10em;
+            padding: 3em;
+            height: fit-content;
+            position: relative;
+            font-size: 1.2rem;
+
+            @include _mq-down(md) {
+                font-size: 1.8em;
+                margin: 10em 3em;
+            }
+
+            @include _mq-down(sm) {
+                margin: 10em 1em;
+            }
+
+            &::before {
+                content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+<line x1="25.5"x2="25.5"y2="92"stroke="black"/> <path d="M0 27L159 27"stroke="black"/> </svg> ');
+position: absolute;
+                    top: -20%;
+
+                    @include _mq-down(xl) {
+                        top: -15%;
+                    }
+                }
+
+                &::after {
+                    content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+<line x1="133.5"y1="92"x2="133.5"stroke="black"/> <path d="M159 65H0"stroke="black"/> </svg> ');
+position: absolute;
+                        right: 7%;
+                        bottom:-20%;
+
+                        @include _mq-down(xl) {
+                            bottom: -15%;
+                        }
+                    }
+
+                    dl {
+                        padding:2em;
+
+                        @include _mq-down(sm) {
+                            padding: 0.5em;
+                        }
+
+                        dt {
+                            font-weight: bold;
+                            font-size: 1.2em;
+                        }
+
+                        dd {
+
+                            ul {
+                                margin-top: 1em;
+                            }
+                        }
+                    }
+                }

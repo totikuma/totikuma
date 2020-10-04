@@ -30,10 +30,12 @@ categories: [layout]
    @include _mq-down(md) {
      display: flex;
      flex-direction: column;
+     padding-top: 8.2em;
    }
 
    @include _mq-down(sm) {
      min-width: 340px;
+     padding-top: 8.4em;
    }
 
    &__left {
@@ -51,6 +53,10 @@ categories: [layout]
            width: 100%;
            object-fit: cover;
            object-position: -5em 50%;
+
+           @include _mq-down(sm) {
+             object-position: -20em 50%;
+           }
          }
        }
 

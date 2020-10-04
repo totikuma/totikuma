@@ -802,12 +802,14 @@ categories: [layout]
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+    padding-top: 8.2em;
   }
 }
 
 @media screen and (max-width: 399px) {
   .l-main {
     min-width: 340px;
+    padding-top: 8.4em;
   }
 }
 
@@ -828,6 +830,13 @@ categories: [layout]
      object-fit: cover;
   -o-object-position: -5em 50%;
      object-position: -5em 50%;
+}
+
+@media screen and (max-width: 399px) {
+  .l-main__left__hero__pic img {
+    -o-object-position: -20em 50%;
+       object-position: -20em 50%;
+  }
 }
 
 .l-main__left__hero__badge {
@@ -2859,6 +2868,7 @@ categories: [project]
   }
   .p-header .spView {
     display: block;
+    margin-left: -1em;
   }
 }
 
@@ -3108,24 +3118,24 @@ categories: [project]
 @media screen and (max-width: 767px) {
   .s-about {
     font-size: 1.8em;
-    margin: 3em;
+    margin: 5em 3em;
   }
 }
 
 @media screen and (max-width: 399px) {
   .s-about {
-    margin: 1em;
+    margin: 5em 0.5em;
   }
 }
 
 .s-about::before {
-  content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">\a   <line x1="25.5" x2="25.5" y2="92" stroke="black"/>\a   <path d="M0 27L159 27" stroke="black"/>\a   </svg>\a   ');
+  content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">\a<line x1="25.5"x2="25.5"y2="92"stroke="black"/> <path d="M0 27L159 27"stroke="black"/> </svg> ');
   position: absolute;
   top: -30%;
 }
 
 .s-about::after {
-  content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">\a     <line x1="133.5" y1="92" x2="133.5" stroke="black"/>\a     <path d="M159 65H0" stroke="black"/>\a     </svg>\a     ');
+  content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">\a<line x1="133.5"y1="92"x2="133.5"stroke="black"/> <path d="M159 65H0"stroke="black"/> </svg> ');
   position: absolute;
   right: 7%;
   bottom: -30%;
@@ -3133,6 +3143,12 @@ categories: [project]
 
 .s-about p {
   padding: 2em;
+}
+
+@media screen and (max-width: 399px) {
+  .s-about p {
+    padding: 0.5em;
+  }
 }
 
 .s-garelly {
@@ -3162,6 +3178,7 @@ categories: [project]
 @media screen and (max-width: 767px) {
   .s-garelly > div {
     width: 100%;
+    padding-right: 5rem;
   }
 }
 
@@ -3189,8 +3206,8 @@ categories: [project]
 }
 
 .s-contact {
-  margin: 10rem;
-  padding: 3rem;
+  margin: 10em;
+  padding: 3em;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
@@ -3201,18 +3218,18 @@ categories: [project]
 @media screen and (max-width: 767px) {
   .s-contact {
     font-size: 1.8em;
-    margin: 3em;
+    margin: 10em 3em;
   }
 }
 
 @media screen and (max-width: 399px) {
   .s-contact {
-    margin: 1em;
+    margin: 10em 1em;
   }
 }
 
 .s-contact::before {
-  content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">\a         <line x1="25.5" x2="25.5" y2="92" stroke="black"/>\a         <path d="M0 27L159 27" stroke="black"/>\a         </svg>\a         ');
+  content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">\a<line x1="25.5"x2="25.5"y2="92"stroke="black"/> <path d="M0 27L159 27"stroke="black"/> </svg> ');
   position: absolute;
   top: -20%;
 }
@@ -3224,7 +3241,7 @@ categories: [project]
 }
 
 .s-contact::after {
-  content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">\a           <line x1="133.5" y1="92" x2="133.5" stroke="black"/>\a           <path d="M159 65H0" stroke="black"/>\a           </svg>\a           ');
+  content: url('data:image/svg+xml;utf-8,<svg width="159" height="92" viewBox="0 0 159 92" fill="none" xmlns="http://www.w3.org/2000/svg">\a<line x1="133.5"y1="92"x2="133.5"stroke="black"/> <path d="M159 65H0"stroke="black"/> </svg> ');
   position: absolute;
   right: 7%;
   bottom: -20%;
@@ -3238,6 +3255,12 @@ categories: [project]
 
 .s-contact dl {
   padding: 2em;
+}
+
+@media screen and (max-width: 399px) {
+  .s-contact dl {
+    padding: 0.5em;
+  }
 }
 
 .s-contact dl dt {

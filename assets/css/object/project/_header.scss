@@ -1,18 +1,24 @@
 .p-header {
   color: #fff;
   background-color: rgba($color: #363636, $alpha: 0.7);
-  .spView{
+
+  .spView {
     display: none;
   }
+
   padding: 0 5em;
-  @include _mq-down(sm){
-    .pcView{
+
+  @include _mq-down(sm) {
+    .pcView {
       display: none;
     }
-    .spView{
+
+    .spView {
       display: block;
+      margin-left: -1em;
     }
-}
+  }
+
   input {
     display: none;
   }
@@ -40,7 +46,7 @@
   }
 
   @include _mq-down(md) {
-  
+
     input {
       display: block;
     }
