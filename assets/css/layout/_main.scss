@@ -53,7 +53,7 @@ categories: [layout]
            width: 100%;
            object-fit: cover;
            object-position: -5em 50%;
-
+           
            @include _mq-down(sm) {
              object-position: -20em 50%;
            }

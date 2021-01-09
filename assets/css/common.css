@@ -538,6 +538,7 @@ body {
   background-color: #fff;
   -webkit-font-feature-settings: "palt";
           font-feature-settings: "palt";
+  content-visiblity: auto;
 }
 
 h1, h2, h3, h4, h5, h6 {
